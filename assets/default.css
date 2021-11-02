@@ -152,6 +152,7 @@ html {
 }
 
 /*Start: Đăng nhập*/
+
 #header .logIn {
     display: flex;
 }
@@ -196,7 +197,7 @@ html {
 /*Content*/
 
 #content {
-    width: 900px;
+    width: 1200px;
     max-width: 100%;
     min-height: 1000px;
     margin-left: auto;
@@ -206,15 +207,26 @@ html {
     padding-right: 16px;
     background-color: rgb(49, 49, 49);
     color: var(--text-color);
+    display: none;
 }
 
-#content .phieu {
+#content.open {
+    display: block;
+}
+
+.phieu {
+    display: none;
+}
+
+.phieu.open {
     display: flex;
     flex-direction: column;
 }
 
-#content .phieu .label-heading {
+.label-heading {
     text-align: center;
+    text-transform: uppercase;
+    font-size: 32px;
 }
 
 #content .phieu-container {
@@ -231,21 +243,24 @@ html {
 #content .phieu-content {
     font-size: 15px;
     display: flex;
-    margin: 8px 0;
+    margin: 16px 0;
 }
 
 #content .phieu-label {
-    min-width: 118px;
+    display: flex;
     float: left;
+    min-width: 130px;
+    font-size: 16px;
+    align-items: center;
 }
 
 #content .phieu-input {
     flex: 1;
-    padding: 3px;
+    padding: 8px;
     margin: 4px;
     border-radius: 2px;
     border: none;
-    font-size: 12px;
+    font-size: 14px;
     color: black;
 }
 
@@ -265,6 +280,14 @@ html {
     margin: 10px;
 }
 
+.btn {
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 2px;
+}
+
 /*Footer*/
 
 #footer {
@@ -280,8 +303,6 @@ html {
     right: 0;
     left: 0;
     bottom: 0;
-    align-items: center;
-    justify-content: center;
     display: none;
 }
 
@@ -299,6 +320,7 @@ html {
 .modal-close:hover {
     background-color: #ccc;
     opacity: 0.8;
+    cursor: pointer;
 }
 
 .modal-logIn {
@@ -307,6 +329,8 @@ html {
     background-color: white;
     position: relative;
     animation: modalSlideDown ease-in .5s;
+    margin: auto;
+    border-radius: 3px;
 }
 
 .modal-header {
@@ -321,7 +345,7 @@ html {
 }
 
 .modal-heading2 {
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .modal-content {
@@ -341,6 +365,10 @@ html {
     margin-bottom: 10px;
 }
 
+#Remember:hover {
+    cursor: pointer;
+}
+
 #modal-button-logIn {
     display: block;
     margin: 15px 0;
@@ -357,17 +385,19 @@ html {
 }
 
 .modal-footer {
-    margin: 10px 20px 40px;
-}
-
-.modal-footer:hover {
-    opacity: 0.5;
+    padding: 10px 20px 16px;
 }
 
 .modal-footer a {
     text-decoration: none;
     color: rgb(2, 91, 255);
 }
+
+.modal-footer a:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
 
 @keyframes modalSlideDown {
     from {
