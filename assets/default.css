@@ -12,6 +12,8 @@ html {
 /*Class chung*/
 :root {
     --text-color: white;
+    --hover-color: rgb(252, 172, 0);
+    --text-black: #333;
 }
 
 .row {
@@ -76,7 +78,7 @@ html {
 #nav > li:hover,
 #nav > li:hover > a,
 #nav > li:hover > .nav-arrow-down {
-    color: black;
+    color: var(--text-black);
     background-color: rgb(252, 172, 0);
     cursor: pointer;
     border-radius: 2px;
@@ -84,7 +86,7 @@ html {
 
 
 #nav > li > .subnav {
-    background-color: white;
+    background-color: var(--text-color);
     list-style: none;
     position: absolute;
     display: none;
@@ -93,6 +95,7 @@ html {
     box-shadow: 0 0 10px rgba(95, 40, 40, 0.4);
     line-height: 36px;
     border-radius: 2px;
+    color: var(--text-color);
 }
 
 #nav > li:hover > .subnav {
@@ -100,7 +103,7 @@ html {
 }
 
 .subnav > li:hover, .subnav > li:hover > i {
-    background-color: rgb(252, 172, 0);
+    background-color: var(--hover-color);
     color: black;
 }
 
@@ -138,11 +141,12 @@ html {
     display: none;
     border-radius: 2px;
     height: 30px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(95, 40, 40, 0.4);
 }
 
 .subnav2 li:hover {
-    background-color: rgb(252, 172, 0);
+    background-color: var(--hover-color);
 }
 
 #nav .nav-arrow-down {
@@ -177,7 +181,7 @@ html {
 #header .btn-logIn:hover .js-btn-logIn {
     color: black;
     cursor: pointer;
-    background-color: rgb(252, 172, 0);
+    background-color: var(--hover-color);
 }
 
 .js-btn-logIn,
@@ -216,6 +220,7 @@ html {
 
 .phieu {
     display: none;
+    margin: 0 16px;
 }
 
 .phieu.open {
@@ -232,8 +237,6 @@ html {
 #content .phieu-container {
     float: left;
     width: 100%;
-    padding-left: 8px;
-    padding-right: 8px;
 }
 
 #content .two-side {
@@ -271,8 +274,6 @@ html {
 .phieu-btn {
     display: flex;
     justify-content: space-between;
-    padding-left: 8px;
-    padding-right: 8px;
 }
 
 .phieu-btn .btn {
@@ -286,6 +287,34 @@ html {
     padding: 10px 20px;
     border: 2px solid #333;
     border-radius: 2px;
+}
+
+.table {
+    color: black;
+    background-color: white;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tbody {
+    width: 100%;
+}
+
+.table-data {
+    text-align: center;
+    width:100%;
+}
+
+th {
+    padding-left: 8px;
+    padding-right: 7px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
 }
 
 /*Footer*/

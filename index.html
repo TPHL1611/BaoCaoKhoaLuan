@@ -100,10 +100,10 @@
                         </li>
                         <li><a href="">Kho <i class="nav-arrow-right ti-arrow-circle-right"></i></a>                            
                             <ul class="subnav2">
-                                <li class="js-phieu-nhap"><a href="#">Nhập kho</a></li>
-                                <li class="js-phieu-xuat"><a href="#">Xuất kho</a></li>
-                                <li class="js-phieu-yeu-cau"><a href="#">Phiếu yêu cầu</a></li>
-                                <li class="js-phieu-kiem-tra"><a href="#">Phiếu kiểm tra</a></li>
+                                <li class="js-phieu js-phieu-nhap open"><a href="#">Nhập kho</a></li>
+                                <li class="js-phieu js-phieu-xuat"><a href="#">Xuất kho</a></li>
+                                <li class="js-phieu js-phieu-kiem-tra"><a href="#">Phiếu kiểm tra</a></li>
+                                <li class="js-phieu js-phieu-yeu-cau"><a href="#">Phiếu yêu cầu</a></li>
                                 <li><a href="">Lệnh sản xuất</a></li>
                                 <li><a href="">Lệnh lắp ráp, tháo dỡ</a></li>
                                 <li><a href="">Tính giá xuất kho</a></li>
@@ -203,7 +203,7 @@
         <div id="content">
         <!--Start: Phiếu nhập-->
 
-            <div class="phieu js-phieuNhap">
+            <div class="phieu js-phieuNhap open">
                 <label for="" class="label-heading">Phiếu nhập</label>
                 
                 <div class="phieu-container">
@@ -275,6 +275,24 @@
                     <div class="row-btn">
                         <button class="btn">Xong</button>
                     </div>
+                </div>
+
+                <div class="table">
+                    <table>
+                        <tr class="table-header">
+                            <th>Mã phiếu nhập</th>
+                            <th>Mã loại hàng hóa</th>
+                            <th>Tên loại hàng hóa</th>
+                            <th>Mã hàng hóa</th>
+                            <th>Tên hàng hóa</th>
+                            <th>Số lượng nhập</th>
+                            <th>Mã nhân viên</th>
+                            <th>Mã kho</th>
+                            <th>Ngày nhập</th>
+                            <th>Ghi chú</th>
+                        </tr>
+                        <tr class="table-data tb-phieuNhap"></tr>
+                    </table>
                 </div>
             </div>
 
@@ -519,17 +537,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="phieu-btn">
-                        <div class="row-btn">
-                            <button class="btn">Thêm</button>
-                            <button class="btn">Sửa</button>
-                            <button class="btn">Xóa</button>
-                        </div>
-                    
-                        <div class="row-btn">
-                            <button class="btn">Xong</button>
-                        </div>
+                </div>
+                
+                <div class="phieu-btn">
+                    <div class="row-btn">
+                        <button class="btn">Thêm</button>
+                        <button class="btn">Sửa</button>
+                        <button class="btn">Xóa</button>
+                    </div>
+                
+                    <div class="row-btn">
+                        <button class="btn">Xong</button>
                     </div>
                 </div>
                     
@@ -572,79 +590,102 @@
             </footer>
         </div>
     </div>
-    <script src="main.js">
+    <script src="./assets/main.js">
     </script>
 
     <script>
+        //MODAL
         const modal = document.querySelector('.js-modal')
         const btnLogIn = document.querySelector('.js-btn-logIn')
         const modalClose = document.querySelector('.js-modal-close')
         const modalLogIn = document.querySelector('.js-modal-logIn')
-        const phieu = document.getElementById('content')
-        const phieuNhap = phieu.querySelector('.js-phieuNhap')
-        const phieuXuat = phieu.querySelector('.js-phieuXuat')
-        const phieuKiemTra = phieu.querySelector('.js-phieuKiemTra')
-        const phieuYeuCau = phieu.querySelector('.js-phieuYeuCau')
-        const btn_phieuNhap = document.querySelector('.js-phieu-nhap')
-        const btn_phieuXuat = document.querySelector('.js-phieu-xuat')
-        const btn_phieuYeuCau = document.querySelector('.js-phieu-yeu-cau')
-        const btn_phieuKiemTra = document.querySelector('.js-phieu-kiem-tra')
-
-
+    
         function showModalLogIn() {
             modal.classList.add('open');
         }   
-
+        
         function closeModalLogIn() {
             modal.classList.remove('open');
         } 
 
         btnLogIn.addEventListener('click', showModalLogIn);
-
+        
         modalClose.addEventListener('click', closeModalLogIn);
         
         modal.addEventListener('click', closeModalLogIn);
-
+        
         modalLogIn.addEventListener('click', function() {
             event.stopPropagation();
         })
+        
+        //PHIEU
+        const content = document.getElementById('content')
 
-        function showFormPhieuNhap() {
-            phieuXuat.classList.remove('open');
-            phieuKiemTra.classList.remove('open');
-            phieuYeuCau.classList.remove('open');
-            phieu.classList.add('open');
-            phieuNhap.classList.add('open');
-        }
+        const phieus = document.querySelectorAll('.phieu')
+        const btns = document.querySelectorAll('.js-phieu')
+        console.log(btns, phieus)
 
-        function showFormPhieuXuat() {
-            phieuNhap.classList.remove('open');
-            phieuYeuCau.classList.remove('open');
-            phieuKiemTra.classList.remove('open');
-            phieu.classList.add('open');
-            phieuXuat.classList.add('open');
-        }
+            btns.forEach(function(btn, index) {
+                var phieu = phieus[index];
 
-        function showFormPhieuKiemTra() {
-            phieuNhap.classList.remove('open');
-            phieuXuat.classList.remove('open');
-            phieuYeuCau.classList.remove('open');
-            phieu.classList.add('open');
-            phieuKiemTra.classList.add('open');
-        }
+                btn.onclick = function() {
+                    document.querySelector('.js-phieu.open').classList.remove('open');
+                    document.querySelector('.phieu.open').classList.remove('open');
 
-        function showFormPhieuYeuCau() {
-            phieuNhap.classList.remove('open');
-            phieuXuat.classList.remove('open');
-            phieuKiemTra.classList.remove('open');
-            phieu.classList.add('open');
-            phieuYeuCau.classList.add('open');
-        }
+                    content.classList.add('open');
+                    this.classList.add('open');
+                    phieu.classList.add('open');
+                    
+                }
+            })
 
-        btn_phieuNhap.addEventListener('click', showFormPhieuNhap)
-        btn_phieuXuat.addEventListener('click', showFormPhieuXuat)
-        btn_phieuKiemTra.addEventListener('click', showFormPhieuKiemTra)
-        btn_phieuYeuCau.addEventListener('click', showFormPhieuYeuCau)
+
+        //Cách cũ
+        // const phieuNhap = content.querySelector('.js-phieuNhap')
+        // const phieuXuat = content.querySelector('.js-phieuXuat')
+        // const phieuKiemTra = content.querySelector('.js-phieuKiemTra')
+        // const phieuYeuCau = content.querySelector('.js-phieuYeuCau')
+        // const btn_phieuNhap = document.querySelector('.js-phieu-nhap')
+        // const btn_phieuXuat = document.querySelector('.js-phieu-xuat')
+        // const btn_phieuYeuCau = document.querySelector('.js-phieu-yeu-cau')
+        // const btn_phieuKiemTra = document.querySelector('.js-phieu-kiem-tra')
+        
+        // function showFormPhieuNhap() {
+        //     phieuXuat.classList.remove('open');
+        //     phieuKiemTra.classList.remove('open');
+        //     phieuYeuCau.classList.remove('open');
+        //     content.classList.add('open');
+        //     phieuNhap.classList.add('open');
+        // }
+
+        // function showFormPhieuXuat() {
+        //     phieuNhap.classList.remove('open');
+        //     phieuYeuCau.classList.remove('open');
+        //     phieuKiemTra.classList.remove('open');
+        //     content.classList.add('open');
+        //     phieuXuat.classList.add('open');
+        // }
+
+        // function showFormPhieuKiemTra() {
+        //     phieuNhap.classList.remove('open');
+        //     phieuXuat.classList.remove('open');
+        //     phieuYeuCau.classList.remove('open');
+        //     content.classList.add('open');
+        //     phieuKiemTra.classList.add('open');
+        // }
+
+        // function showFormPhieuYeuCau() {
+        //     phieuNhap.classList.remove('open');
+        //     phieuXuat.classList.remove('open');
+        //     phieuKiemTra.classList.remove('open');
+        //     content.classList.add('open');
+        //     phieuYeuCau.classList.add('open');
+        // }
+
+        // btn_phieuNhap.addEventListener('click', showFormPhieuNhap)
+        // btn_phieuXuat.addEventListener('click', showFormPhieuXuat)
+        // btn_phieuKiemTra.addEventListener('click', showFormPhieuKiemTra)
+        // btn_phieuYeuCau.addEventListener('click', showFormPhieuYeuCau)
 
         
     </script>
