@@ -77,6 +77,7 @@ function renderPhieuNhap(phieuNhaps) {
             <button class="btn-size-s" onclick="handleUpdatePhieuNhap(${phieuNhap.id})">Sửa</button>
         </tr>`;
     })
+
     listPhieuNhap.innerHTML = htmls.join('');
 }
 
