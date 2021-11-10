@@ -208,14 +208,14 @@
                 
                 <div class="phieu-container">
                     <div class="row">
-                        <div class="phieu-content">
+                        <!-- <div class="phieu-content">
                             <label for="" class="phieu-label">Mã phiếu nhập</label>
                             <input type="text" class= "phieu-input" placeholder="Mã phiếu nhập">
-                        </div>
+                        </div> -->
                         
                         <div class="phieu-content">
                             <label for="" class="phieu-label">Ghi chú</label>
-                            <input type="text" class= "phieu-input" placeholder="Ghi chú">
+                            <input type="text" class= "phieu-input" placeholder="Ghi chú" name="ghiChu">
                         </div>
                     </div>
                     
@@ -223,42 +223,42 @@
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Mã loại hàng hóa</label>
-                                <input type="text" class= "phieu-input" placeholder="Mã loại hàng hóa">
+                                <input type="text" class= "phieu-input" placeholder="Mã loại hàng hóa" name="maLoaiHH">
                             </div>
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Tên loại hàng hóa</label>
-                                <input type="text" class= "phieu-input" placeholder="Tên loại hàng hóa">
+                                <input type="text" class= "phieu-input" placeholder="Tên loại hàng hóa" name="tenLoaiHH">
                             </div>
                         </div>
                         
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Mã hàng hóa</label>
-                                <input type="text" class= "phieu-input" placeholder="Mã hàng hóa">
+                                <input type="text" class= "phieu-input" placeholder="Mã hàng hóa" name="maHH">
                             </div>
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Tên hàng hóa</label>
-                                <input type="text" class= "phieu-input" placeholder="Tên hàng hóa">
+                                <input type="text" class= "phieu-input" placeholder="Tên hàng hóa" name="tenHH">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Mã nhân viên</label>
-                                <input type="text" class= "phieu-input" placeholder="Mã nhân viên">
+                                <input type="text" class= "phieu-input" placeholder="Mã nhân viên" name="maNV">
                             </div>
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Mã kho</label>
-                                <input type="text" class= "phieu-input" placeholder="Mã kho">
+                                <input type="text" class= "phieu-input" placeholder="Mã kho" name="maKho">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Số lượng nhập</label>
-                                <input type="text" class= "phieu-input" placeholder="Số lượng nhập">
+                                <input type="text" class= "phieu-input" placeholder="Số lượng nhập" name="soLuongNhap">
                             </div>
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Ngày nhập</label>
-                                <input type="text" class= "phieu-input" placeholder="Ngày nhập">
+                                <input type="text" class= "phieu-input" placeholder="Ngày nhập" name="ngayNhap">
                             </div>
                         </div>
                     </div>
@@ -267,9 +267,7 @@
 
                 <div class="phieu-btn">
                     <div class="row-btn">
-                        <button class="btn">Thêm</button>
-                        <button class="btn">Sửa</button>
-                        <button class="btn">Xóa</button>
+                        <button class="btn btn-create">Thêm</button>
                     </div>
                     
                     <div class="row-btn">
@@ -277,21 +275,25 @@
                     </div>
                 </div>
 
-                <div class="table">
+                <div class="tablePN">
                     <table>
-                        <tr class="table-header">
-                            <th>Mã phiếu nhập</th>
-                            <th>Mã loại hàng hóa</th>
-                            <th>Tên loại hàng hóa</th>
-                            <th>Mã hàng hóa</th>
-                            <th>Tên hàng hóa</th>
-                            <th>Số lượng nhập</th>
-                            <th>Mã nhân viên</th>
-                            <th>Mã kho</th>
-                            <th>Ngày nhập</th>
-                            <th>Ghi chú</th>
-                        </tr>
-                        <tr class="table-data tb-phieuNhap"></tr>
+                        <thead>
+                            <tr class="table-header">
+                                <th>Mã phiếu nhập</th>
+                                <th>Mã loại hàng hóa</th>
+                                <th>Tên loại hàng hóa</th>
+                                <th>Mã hàng hóa</th>
+                                <th>Tên hàng hóa</th>
+                                <th>Số lượng nhập</th>
+                                <th>Mã nhân viên</th>
+                                <th>Mã kho</th>
+                                <th>Ngày nhập</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -304,12 +306,8 @@
                 <div class="phieu-container">
                     <div class="row">
                         <div class="phieu-content">
-                            <label for="" class="phieu-label">Mã phiếu xuất</label>
-                            <input type="text" class= "phieu-input" placeholder="Mã phiếu xuất">
-                        </div>
-                        <div class="phieu-content">
                             <label for="" class="phieu-label">Ghi chú</label>
-                            <input type="text" class= "phieu-input" placeholder="Ghi chú">
+                            <input type="text" class= "phieu-input" placeholder="Ghi chú" name="ghiChu">
                         </div>
                     </div>
 
@@ -317,11 +315,11 @@
                     <div class="row">
                         <div class="col col-half phieu-content">
                             <label for="" class="phieu-label">Mã loại hàng hóa</label>
-                            <input type="text" class= "phieu-input" placeholder="Mã loại hàng hóa">
+                            <input type="text" class= "phieu-input" placeholder="Mã loại hàng hóa" name="maLoaiHH">
                         </div>
                         <div class="col col-half phieu-content">
                             <label for="" class="phieu-label">Tên loại hàng hóa</label>
-                            <input type="text" class= "phieu-input" placeholder="Tên loại hàng hóa">
+                            <input type="text" class= "phieu-input" placeholder="Tên loại hàng hóa" name="tenLoaiHH">
                         </div>
                     </div>
                     
@@ -329,33 +327,33 @@
                     <div class="row">
                         <div class="col col-half phieu-content">
                             <label for="" class="phieu-label">Mã hàng hóa</label>
-                            <input type="text" class= "phieu-input" placeholder="Mã hàng hóa">
+                            <input type="text" class= "phieu-input" placeholder="Mã hàng hóa" name="maHH">
                         </div>
                         <div class="col col-half phieu-content">
                             <label for="" class="phieu-label">Tên hàng hóa</label>
-                            <input type="text" class= "phieu-input" placeholder="Tên hàng hóa">
+                            <input type="text" class= "phieu-input" placeholder="Tên hàng hóa" name="tenHH">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col col-half phieu-content">
                             <label for="" class="phieu-label">Mã nhân viên</label>
-                            <input type="text" class= "phieu-input" placeholder="Mã nhân viên">
+                            <input type="text" class= "phieu-input" placeholder="Mã nhân viên" name="maNV">
                         </div>
                         <div class="col col-half phieu-content">
                             <label for="" class="phieu-label">Mã kho</label>
-                            <input type="text" class= "phieu-input" placeholder="Mã kho">
+                            <input type="text" class= "phieu-input" placeholder="Mã kho" name="maKho">
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="col col-half phieu-content">
                             <label for="" class="phieu-label">Số lượng xuất</label>
-                            <input type="text" class= "phieu-input" placeholder="Số lượng nhập">
+                            <input type="text" class= "phieu-input" placeholder="Số lượng nhập" name="soLuongXuat">
                         </div>
                         <div class="col col-half phieu-content">
                             <label for="" class="phieu-label">Ngày xuất</label>
-                            <input type="text" class= "phieu-input" placeholder="Ngày nhập">
+                            <input type="text" class= "phieu-input" placeholder="Ngày nhập" name="ngayXuat">
                         </div>
                     </div>
                 </div>
@@ -363,14 +361,34 @@
 
                 <div class="phieu-btn">
                     <div class="row-btn">
-                        <button class="btn">Thêm</button>
-                        <button class="btn">Sửa</button>
-                        <button class="btn">Xóa</button>
+                        <button class="btn btn-create">Thêm</button>
                     </div>
                     
                     <div class="row-btn">
                         <button class="btn">Xong</button>
                     </div>
+                </div>
+
+                <div class="tablePX">
+                    <table>
+                        <thead>
+                            <tr class="table-header">
+                                <th>Mã phiếu xuất</th>
+                                <th>Mã loại hàng hóa</th>
+                                <th>Tên loại hàng hóa</th>
+                                <th>Mã hàng hóa</th>
+                                <th>Tên hàng hóa</th>
+                                <th>Số lượng xuất</th>
+                                <th>Mã nhân viên</th>
+                                <th>Mã kho</th>
+                                <th>Ngày xuất</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -382,17 +400,13 @@
                 <div class="phieu-container">                    
                     <div class="row">
                         <div class="phieu-content">
-                            <label for="" class="phieu-label">Mã phiếu kiểm tra</label>
-                            <input type="text" class= "phieu-input" placeholder="Mã phiếu kiểm tra">
-                        </div>
-                        <div class="phieu-content">
                             <label for="" class="phieu-label">Tình trạng</label>
-                            <input type="text" class= "phieu-input" placeholder="Tình trạng">
+                            <input type="text" class= "phieu-input" placeholder="Tình trạng" name="tinhTrang">
                         </div>
                         
                         <div class="phieu-content">
                             <label for="" class="phieu-label">Ghi chú</label>
-                            <input type="text" class= "phieu-input" placeholder="Ghi chú">
+                            <input type="text" class= "phieu-input" placeholder="Ghi chú" name="ghiChu">
                         </div>
                     </div>   
 
@@ -400,63 +414,63 @@
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Mã loại hàng hóa</label>
-                                <input type="text" class= "phieu-input" placeholder="Mã loại hàng hóa">
+                                <input type="text" class= "phieu-input" placeholder="Mã loại hàng hóa" name="maLoaiHH">
                             </div>
 
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Tên loại hàng hóa</label>
-                                <input type="text" class= "phieu-input" placeholder="Tên loại hàng hóa">
+                                <input type="text" class= "phieu-input" placeholder="Tên loại hàng hóa" name="tenLoaiHH">
                             </div>
                         </div>
                             
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Mã hàng hóa</label>
-                                <input type="text" class= "phieu-input" placeholder="Mã hàng hóa">
+                                <input type="text" class= "phieu-input" placeholder="Mã hàng hóa" name="maHH">
                             </div>
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Tên hàng hóa</label>
-                                <input type="text" class= "phieu-input" placeholder="Tên hàng hóa">
+                                <input type="text" class= "phieu-input" placeholder="Tên hàng hóa" name="tenHH">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Mã nhà cung cấp</label>
-                                <input type="text" class= "phieu-input" placeholder="Mã nhà cung cấp">
+                                <input type="text" class= "phieu-input" placeholder="Mã nhà cung cấp" name="MaNCC">
                             </div>
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Tên nhà cung cấp</label>
-                                <input type="text" class= "phieu-input" placeholder="Tên nhà cung cấp">
+                                <input type="text" class= "phieu-input" placeholder="Tên nhà cung cấp" name="tenNCC">
                             </div>
                         </div>
                             
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Mã nhân viên</label>
-                                <input type="text" class= "phieu-input" placeholder="Mã nhân viên">
+                                <input type="text" class= "phieu-input" placeholder="Mã nhân viên" name="maNV">
                             </div>
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Tên nhân viên</label>
-                                <input type="text" class= "phieu-input" placeholder="Tên nhân viên">
+                                <input type="text" class= "phieu-input" placeholder="Tên nhân viên" name="tenNV">
                             </div>
                         </div>
                         
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Số lượng yêu cầu</label>
-                                <input type="text" class= "phieu-input" placeholder="Số lượng yêu cầu">
+                                <input type="text" class= "phieu-input" placeholder="Số lượng yêu cầu" name="soLuongYeuCau">
                             </div>
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Ngày lập phiếu</label>
-                                <input type="text" class= "phieu-input" placeholder="Ngày lập phiếu">
+                                <input type="text" class= "phieu-input" placeholder="Ngày lập phiếu" name="ngayLapPhieu">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col col-half phieu-content">
                                 <label for="" class="phieu-label">Số lượng kiểm tra</label>
-                                <input type="text" class= "phieu-input" placeholder="Số lượng kiểm tra">
+                                <input type="text" class= "phieu-input" placeholder="Số lượng kiểm tra" name="soLuongKiemTra">
                             </div>
                         </div>
                     </div>
@@ -465,13 +479,36 @@
                 <div class="phieu-btn">
                     <div class="row-btn">
                         <button class="btn">Thêm</button>
-                        <button class="btn">Sửa</button>
-                        <button class="btn">Xóa</button>
                     </div>
                     
                     <div class="row-btn">
                         <button class="btn">Xong</button>
                     </div>
+                </div>
+
+                <div class="tablePKT">
+                    <table>
+                        <thead>
+                            <tr class="table-header">
+                                <th>Mã phiếu kiểm tra</th>
+                                <th>Mã loại hàng hóa</th>
+                                <th>Tên loại hàng hóa</th>
+                                <th>Mã hàng hóa</th>
+                                <th>Tên hàng hóa</th>
+                                <th>Số lượng yêu cầu</th>
+                                <th>Số lượng kiểm tra</th>
+                                <th>Mã nhân viên</th>
+                                <th>Tên nhân viên</th>
+                                <th>Mã nhà cung cấp</th>
+                                <th>Tên nhà cung cấp</th>
+                                <th>Ngày lập phiếu</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -483,10 +520,6 @@
                 <div class="phieu-container">
                     <div class="row">
                         <div class="phieu-content">
-                            <label for="" class="phieu-label">Mã phiếu yêu cầu</label>
-                            <input type="text" class= "phieu-input" placeholder="Mã phiếu yêu cầu">
-                        </div>
-                        <div class="phieu-content">
                             <label for="" class="phieu-label">Ghi chú</label>
                             <input type="text" class= "phieu-input" placeholder="Ghi chú">
                         </div>
@@ -541,14 +574,34 @@
                 
                 <div class="phieu-btn">
                     <div class="row-btn">
-                        <button class="btn">Thêm</button>
-                        <button class="btn">Sửa</button>
-                        <button class="btn">Xóa</button>
+                        <button class="btn btn-create">Thêm</button>
                     </div>
                 
                     <div class="row-btn">
                         <button class="btn">Xong</button>
                     </div>
+                </div>
+
+                <div class="tablePYC">
+                    <table>
+                        <thead>
+                            <tr class="table-header">
+                                <th>Mã phiếu yêu cầu</th>
+                                <th>Mã loại hàng hóa</th>
+                                <th>Tên loại hàng hóa</th>
+                                <th>Mã hàng hóa</th>
+                                <th>Tên hàng hóa</th>
+                                <th>Số lượng yêu cầu</th>
+                                <th>Mã nhân viên</th>
+                                <th>Tên nhân viên</th>
+                                <th>Ngày lập phiếu</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
                     
             </div>

@@ -282,34 +282,37 @@ html {
 }
 
 .btn {
-    cursor: pointer;
     margin: 10px;
     padding: 10px 20px;
     border: 2px solid #333;
     border-radius: 2px;
 }
 
-.table {
+table {
+    width: 100%;
+    text-align: center;
     color: black;
     background-color: white;
-}
-
-table {
     border-collapse: collapse;
+    border: 1px solid black;
 }
 
-tbody {
-    width: 100%;
+.table-data button {
+    right:0;
+    position: relative;
 }
 
-.table-data {
-    text-align: center;
-    width:100%;
+.btn-size-s {
+    padding: 8px;
+    margin: 8px;
+    background-color: #ccc;
+    border: 2px solid #333;
 }
 
-th {
-    padding-left: 8px;
-    padding-right: 7px;
+.btn:hover,
+.btn-size-s:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 th, td {

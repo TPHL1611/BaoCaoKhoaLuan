@@ -1,41 +1,142 @@
+
 {
-    "boPhan": [
-        {"MaBP": 1, "TenBP": "Phòng kế toán"}
-    ],
-
-    "nhanVien": [
-        { "MaNV":"1", "HoTenNV": "Trần Phan Hải Long", "GioiTinh": "Nam", "ChucVu": "Nhân viên", "BoPhan": "Phòng kế toán", "EmailNV": "", "SoDienThoaiNV": ""}
-    ],
-
-    "nhaCungCap": [
-        {"MaNCC": "1", "TenNCC": "Khánh Việt", "DiaChiNCC": "", "MaLoaiHH": "1", "SoDienThoaiNCC": "", "EmailNCC": ""}
-    ],
-
-    "Kho": [
-        {"MaKho": "1", "TenKho": "", "DiaChiKho": "", "MaLoaiHH": ""}
-    ],
-    
-    "loaiHH": [
-        {"MaLoaiHH": 1, "TenLoaiHH": "Nguyên liệu chính"}
-    ],
-
-    "hangHoa": [
-        {"MaHH": "1", "TenHH": "Vải cotton ", "SoLuong": "10000", "DonViTinh": "mét", "MaNV": "1", "MaLoaiHH": "1", "GhiChu": ""}
-    ],
-
-    "phieuNhap": [
-        {"MaPN": "1", "MaLoaiHH": "1", "TenLoaiHH": "Nguyên liệu chính", "MaHH": "1", "TenHH": "Nguyên liệu chính", "SoLuongNhap": "5000", "MaNV": "1", "MaKho": "1", "NgayNhap": "16/11/2020", "GhiChu": ""}
-    ],
-
-    "phieuXuat": [
-        {"MaPYC": "", "MaLoaiHH": "", "TenLoaiHH": "", "MaHH": "", "TenHH": "", "SoLuongYC": "", "MaNV": "", "NgayLapPYC": "", "GhiChu": ""}
-    ],
-
-    "phieuKiemTra": [
-        {"MaPKT": 1, "MaLoaiHH": "", "TenLoaiHH": "", "MaHH": "", "TenHH": "", "MaNCC": "", "TenNCC": "", "MaNV":"", "HoTenNV": "", "SoLuongYC": "", "SoLuongKT": "", "TinhTrang": "", "NgayLapPKT": "", "GhiChu": ""}
-    ],
-
-    "hoaDon": [
-        {"MaPKT": 1, "MaNCC": "", "TenNCC": "", "MaLoaiHH": "", "TenLoaiHH": "", "MaHH": "", "TenHH": "", "SoLuong": "", "GiaTien": "", "NgayLapHD": "", "GhiChu": ""}
-    ]
+  "boPhan": [
+    {
+      "idMaBP": 1,
+      "TenBP": "Phòng kế toán"
+    }
+  ],
+  "nhanVien": [
+    {
+      "idMaNV": 1,
+      "HoTenNV": "Trần Phan Hải Long",
+      "GioiTinh": "Nam",
+      "ChucVu": "Nhân viên",
+      "BoPhan": "Phòng kế toán",
+      "EmailNV": "",
+      "SoDienThoaiNV": ""
+    }
+  ],
+  "nhaCungCap": [
+    {
+      "idMaNCC": 1,
+      "TenNCC": "Khánh Việt",
+      "DiaChiNCC": "",
+      "MaLoaiHH": 1,
+      "SoDienThoaiNCC": "",
+      "EmailNCC": ""
+    }
+  ],
+  "Kho": [
+    {
+      "idMaKho": 1,
+      "TenKho": "",
+      "DiaChiKho": "",
+      "MaLoaiHH": ""
+    }
+  ],
+  "loaiHH": [
+    {
+      "idMaLoaiHH": 1,
+      "TenLoaiHH": "Nguyên liệu chính"
+    }
+  ],
+  "hangHoa": [
+    {
+      "idMaHH": 1,
+      "TenHH": "Vải cotton ",
+      "SoLuong": "10000",
+      "DonViTinh": "mét",
+      "idMaNV": 1,
+      "idMaLoaiHH": 1,
+      "GhiChu": ""
+    }
+  ],
+  "phieuNhap": [
+    {
+      "id": 1,
+      "idMaLoaiHH": 1,
+      "TenLoaiHH": "Nguyên liệu chính",
+      "idMaHH": 1,
+      "TenHH": "Nguyên liệu chính",
+      "SoLuongNhap": "5000",
+      "idMaNV": 1,
+      "idMaKho": 1,
+      "NgayNhap": "16/11/2020",
+      "GhiChu": ""
+    },
+    {
+      "id": 2,
+      "idMaLoaiHH": "2",
+      "TenLoaiHH": "Nguyên liệu chính",
+      "idMaHH": "1",
+      "TenHH": "Nguyên liệu chính",
+      "SoLuongNhap": "5000",
+      "idMaNV": "1",
+      "idMaKho": "1",
+      "NgayNhap": "16/11/2020",
+      "GhiChu": ""
+    }
+  ],
+  "phieuXuat": [
+    {
+      "id": "",
+      "idMaLoaiHH": "",
+      "TenLoaiHH": "",
+      "idMaHH": "",
+      "TenHH": "",
+      "SoLuongXuat": "",
+      "idMaNV": "",
+      "idMaKho": "",
+      "NgayXuat": "",
+      "GhiChu": ""
+    }
+  ],
+  "phieuKiemTra": [
+    {
+      "id": 1,
+      "idMaLoaiHH": "",
+      "TenLoaiHH": "",
+      "idMaHH": "",
+      "TenHH": "",
+      "idMaNCC": "",
+      "TenNCC": "",
+      "idMaNV": "",
+      "HoTenNV": "",
+      "SoLuongYC": "",
+      "SoLuongKT": "",
+      "TinhTrang": "",
+      "NgayLapPKT": "",
+      "GhiChu": ""
+    }
+  ],
+  "phieuYeuCau": [
+    {
+      "id": 1,
+      "idMaLoaiHH": "",
+      "TenLoaiHH": "",
+      "idMaHH": "",
+      "TenHH": "",
+      "idMaNV": "",
+      "HoTenNV": "",
+      "SoLuongYC": "",
+      "NgayLapPYC": "",
+      "GhiChu": ""
+    }
+  ],
+  "hoaDon": [
+    {
+      "idMaHD": 1,
+      "idMaNCC": "",
+      "TenNCC": "",
+      "idMaLoaiHH": "",
+      "TenLoaiHH": "",
+      "idMaHH": "",
+      "TenHH": "",
+      "SoLuong": "",
+      "GiaTien": "",
+      "NgayLapHD": "",
+      "GhiChu": ""
+    }
+  ]
 }
