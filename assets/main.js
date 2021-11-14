@@ -1,12 +1,527 @@
+/**
+ * |-----------------------------------------------------------------------|
+ * |                            NHÀ CUNG CẤP                               |
+ * |-----------------------------------------------------------------------|
+ */
+
+ var nhaCungCapApi = 'http://localhost:3000/nhaCungCap'
+
+ function getNhaCungCap(callback) {
+     fetch(nhaCungCapApi)
+         .then(response => response.json())
+         .then(callback);
+ }
+ 
+ function createNhaCungCap(data, callback) {
+     var options = {
+         method: 'POST',
+         headers: {
+             'Content-Type': 'application/json'
+             // 'Content-Type': 'application/x-www-form-urlencoded',
+         },
+         body: JSON.stringify(data)
+     }
+     fetch(nhaCungCapApi, options)
+         .then(response => response.json())
+         .then(callback)
+ }
+ 
+ function updateNhanVien(id, data, callback) {
+     var options = {
+         method: 'PATCH',
+         headers: {
+             'Content-Type': 'application/json'
+             // 'Content-Type': 'application/x-www-form-urlencoded',
+         },
+         body: JSON.stringify(data)
+     }
+     fetch(nhaCungCapApi + '/' + id, options)
+         .then(response => response.json())
+         .then(callback)
+ }
+ 
+ function renderNhaCungCap(NhaCungCaps) {
+     var listNhaCungCaps = document.querySelector('.tableNCC tbody');
+ 
+     var htmls = NhaCungCaps.map((NhaCungCap) => 
+     `   <tr class="table-data tb-NhaCungCap Item-${NhaCungCap.id}">
+             <td>${NhaCungCap.id}</td>
+             <td class="tenNCC-${NhaCungCap.id}">${NhaCungCap.TenNCC}</td>
+             <td class="idMaLoaiHH-${NhaCungCap.id}">${NhaCungCap.MaLoaiHH}</td>
+             <td class="diaChiNCC-${NhaCungCap.id}">${NhaCungCap.DiaChiNCC}</td>
+             <td class="soDienThoaiNCC-${NhaCungCap.id}">${NhaCungCap.SoDienThoaiNCC}</td>
+             <td class="emailNCC-${NhaCungCap.id}">${NhaCungCap.EmailNCC}</td>
+             <button class="btn-size-s" onclick="handleDeleteNhaCungCap(${NhaCungCap.id})">Xóa</button>
+             <button class="btn-size-s" onclick="handleUpdateNhaCungCap(${NhaCungCap.id})">Sửa</button>
+         </tr>`
+     )
+ 
+     listNhaCungCaps.innerHTML = htmls.join('');
+ }
+ 
+ function handleCreateNhaCungCap() {
+     var createBtn = document.querySelector('.btn-create')
+ 
+     createBtn.onclick = () => {
+        var tenNCC = document.querySelector('input[name="tenNCC"]').value;
+        var emailNCC = document.querySelector('input[name="email"]').value;
+        var idMaLoaiHH = document.querySelector('input[name="idMaLoaiHH"]').value;
+        var diaChiNCC = document.querySelector('input[name="diaChi"]').value;
+        var soDienThoaiNCC = document.querySelector('input[name="lienLac"]').value;
+ 
+        var formData = {
+           TenNCC: tenNCC,
+           EmailNCC: emailNCC,
+           MaLoaiHH: idMaLoaiHH,
+           DiaChiNCC: diaChiNCC,
+           SoDienThoaiNCC: soDienThoaiNCC
+        }
+ 
+        createNhaCungCap(formData, () => getNhaCungCap(renderNhaCungCap));
+     }
+ }
+ 
+ function handleDeleteNhaCungCap(id) {
+     var options = {
+         method: 'DELETE',
+         headers: {
+             'Content-Type': 'application/json'
+             // 'Content-Type': 'application/x-www-form-urlencoded',
+         }
+     }
+     fetch(NhaCungCapApi + '/' + id, options)
+         .then(response => response.json())
+         .then(function() {
+             var NhaCungCapItem = document.querySelector('.Item-' + id);
+             if (NhaCungCapItem) {
+                 NhaCungCapItem.remove();
+             }
+         })
+ }
+ 
+ function handleUpdateNhaCungCap(id) {
+    var tenNCCOld = document.querySelector('.tenNCC-' + id);
+    var idMaLoaiHHOld = document.querySelector('.idMaLoaiHH-' + id);
+    var diaChiNCCOld = document.querySelector('.diaChiNCC-' + id);
+    var soDienThoaiNCCOld = document.querySelector('.soDienThoaiNCC-' + id);
+    var emailNCCOld = document.querySelector('.emailNCC-' + id);
+ 
+    var tenNCC = document.querySelector('input[name="tenNCC"]');
+    var idMaLoaiHH = document.querySelector('input[name="idMaLoaiHH"]');
+    var diaChiNCC = document.querySelector('input[name="diaChi"]');
+    var soDienThoaiNCC = document.querySelector('input[name="lienLac"]');
+    var emailNCC = document.querySelector('input[name="email"]');
+ 
+    tenNCC.value = tenNCCOld.innerText;
+    idMaLoaiHH.value = idMaLoaiHHOld.innerText;
+    diaChiNCCOld.value = diaChiNCC.innerText;
+    soDienThoaiNCC.value = soDienThoaiNCCOld.innerText;
+    emailNCC.value = emailNCCOld.innerText;
+     
+    var createBtn = document.querySelector('.btn-create')
+    createBtn.innerText = "Lưu"
+
+    createBtn.onclick = function() {
+        var formData = {
+            TenNCC: tenNCC.value,
+            MaLoaiHH: idMaLoaiHH.value,
+            DiaChiNCC: diaChiNCCOld.value,
+            SoDienThoaiNCC: soDienThoaiNCC.value,
+            EmailNCC: emailNCC.value
+        }
+ 
+        updateNhaCungCap(id, formData, () => getNhaCungCap(renderNhaCungCap))
+    }
+}
+
+/**
+ * |-----------------------------------------------------------------------|
+ * |                               NHÂN VIÊN                               |
+ * |-----------------------------------------------------------------------|
+ */
+
+var nhanVienApi = 'http://localhost:3000/nhanVien'
+
+function getNhanVien(callback) {
+    fetch(nhanVienApi)
+        .then(response => response.json())
+        .then(callback);
+}
+
+function createNhanVien(data, callback) {
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    }
+    fetch(nhanVienApi, options)
+        .then(response => response.json())
+        .then(callback)
+}
+
+function updateNhanVien(id, data, callback) {
+    var options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    }
+    fetch(nhanVienApi + '/' + id, options)
+        .then(response => response.json())
+        .then(callback)
+}
+
+function renderNhanVien(nhanViens) {
+    var listNhanViens = document.querySelector('.tableNV tbody');
+
+    var htmls = nhanViens.map((nhanVien) => 
+    `   <tr class="table-data tb-NhanVien Item-${nhanVien.id}">
+            <td>${nhanVien.id}</td>
+            <td class="hoTen-${nhanVien.id}">${nhanVien.HoTenNV}</td>
+            <td class="gioiTinh-${nhanVien.id}">${nhanVien.GioiTinh}</td>
+            <td class="chucVu-${nhanVien.id}">${nhanVien.ChucVu}</td>
+            <td class="boPhan-${nhanVien.id}">${nhanVien.BoPhan}</td>
+            <td class="email-${nhanVien.id}">${nhanVien.EmailNV}</td>
+            <td class="soDienThoai-${nhanVien.id}">${nhanVien.SoDienThoaiNV}</td>
+            <button class="btn-size-s" onclick="handleDeleteNhanVien(${nhanVien.id})">Xóa</button>
+            <button class="btn-size-s" onclick="handleUpdateNhanVien(${nhanVien.id})">Sửa</button>
+        </tr>`
+    )
+
+    listNhanViens.innerHTML = htmls.join('');
+}
+
+function handleCreateNhanVien() {
+    var createBtn = document.querySelector('.btn-create')
+
+    createBtn.onclick = () => {
+        var tenNV = document.querySelector('input[name="tenNV"]').value;
+        var email = document.querySelector('input[name="email"]').value;
+        var gioiTinh = document.querySelector('input[name="gender"]').value;
+        var chucVu = document.querySelector('input[name="chucVu"]').value;
+        var phongBan = document.querySelector('input[name="phongBan"]').value;
+        var lienLac = document.querySelector('input[name="lienLac"]').value;
+
+        var formData = {
+            HoTenNV: tenNV,
+            GioiTinh: gioiTinh,
+            ChucVu: chucVu,
+            BoPhan: phongBan,
+            EmailNV: email,
+            SoDienThoaiNV: lienLac
+        }
+
+        createNhanVien(formData, () => getNhanVien(renderNhanVien));
+    }
+}
+
+function handleDeleteNhanVien(id) {
+    var options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
+    }
+    fetch(nhanVienApi + '/' + id, options)
+        .then(response => response.json())
+        .then(function() {
+            var nhanVienItem = document.querySelector('.Item-' + id);
+            if (nhanVienItem) {
+                nhanVienItem.remove();
+            }
+        })
+}
+
+function handleUpdateNhanVien(id) {
+    var hoTenOld = document.querySelector('.hoTen-' + id);
+    var gioiTinhOld = document.querySelector('.gioiTinh-' + id);
+    var chucVuOld = document.querySelector('.chucVu-' + id);
+    var boPhanOld = document.querySelector('.boPhan-' + id);
+    var emailOld = document.querySelector('.email-' + id);
+    var soDienThoaiOld = document.querySelector('.soDienThoai-' + id);
+
+    var tenNV = document.querySelector('input[name="tenNV"]');
+    var email = document.querySelector('input[name="email"]');
+    var gioiTinh = document.querySelector('input[name="gender"]');
+    var chucVu = document.querySelector('input[name="chucVu"]');
+    var phongBan = document.querySelector('input[name="phongBan"]');
+    var lienLac = document.querySelector('input[name="lienLac"]');
+
+    tenNV.value = hoTenOld.innerText;
+    email.value = emailOld.innerText;
+    gioiTinh.value = gioiTinhOld.innerText;
+    chucVu.value = chucVuOld.innerText;
+    phongBan.value = boPhanOld.innerText;
+    lienLac.value = soDienThoaiOld.innerText;
+    
+    var createBtn = document.querySelector('.btn-create')
+    createBtn.innerText = "Lưu"
+
+    createBtn.onclick = function() {
+        var formData = {
+            HoTenNV: tenNV.value,
+            GioiTinh: gioiTinh.value,
+            ChucVu: chucVu.value,
+            BoPhan: phongBan.value,
+            EmailNV: email.value,
+            SoDienThoaiNV: lienLac.value
+        }
+
+        updateNhanVien(id, formData, () => getNhanVien(renderNhanVien))
+    }
+}
+
+
+/**
+ * |-----------------------------------------------------------------------|
+ * |                               BỘ PHẬN                                 |
+ * |-----------------------------------------------------------------------|
+ */
+
 var boPhanApi = 'http://localhost:3000/boPhan'
 
-fetch(boPhanApi)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (boPhans) {
+function getBoPhan(callback) {
+    fetch(boPhanApi)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(callback)
+}
 
+function createBoPhan(data, callback) {
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    }
+    fetch(boPhanApi, options)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(callback)
+}
+
+function updateBoPhan(id, data, callback) {
+    var options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    }
+
+    fetch(boPhanApi + '/' + id, options)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(callback)
+}
+
+function renderBoPhan(BoPhans) {
+    var listBoPhans = document.querySelector('.tableBP tbody')
+
+    var htmls = BoPhans.map(function(BoPhan) {
+        return `
+        <tr class="table-data tb-BoPhan Item-${BoPhan.id}">
+            <td>${BoPhan.id}</td>
+            <td class="maBP-${BoPhan.id}">${BoPhan.MaBP}</td>
+            <td class="tenBP-${BoPhan.id}">${BoPhan.TenBP}</td>
+            <td class="ghiChu-${BoPhan.id}">${BoPhan.GhiChu}</td>
+            <button class="btn-size-s" onclick="handleDeleteBoPhan(${BoPhan.id})">Xóa</button>
+            <button class="btn-size-s" onclick="handleUpdateBoPhan(${BoPhan.id})">Sửa</button>
+        </tr>`;
     })
+
+    listBoPhans.innerHTML = htmls.join('');
+}
+
+function handleCreateBoPhan() {
+    var createBtn = document.querySelector('.btn-create')
+
+    createBtn.onclick = function() {
+        var ghiChu = document.querySelector('input[name="ghiChu"]').value;
+        var maBP = document.querySelector('input[name="maBP"]').value;
+        var tenBP = document.querySelector('input[name="tenBP"]').value;
+
+        var formData = {
+            GhiChu : ghiChu,
+            MaBP: maBP,
+            TenBP: tenBP
+        }
+
+        createBoPhan(formData, function() {
+            getBoPhan(renderBoPhan);
+        })
+    }
+}
+
+function handleDeleteBoPhan(id) {
+    var options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+    };
+    
+    fetch(boPhanApi + '/' + id, options)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function() {
+            var boPhanItem = document.querySelector('.Item-' + id);
+            if (boPhanItem) {
+                boPhanItem.remove();
+            }
+        })
+} 
+
+function handleUpdateBoPhan(id) {
+    var ghiChuOld = document.querySelector('.ghiChu-' + id);
+    var maBPOld = document.querySelector('.maBP-' + id);
+    var tenBPOld = document.querySelector('.tenBP-' + id);
+
+    var ghiChu = document.querySelector('input[name="ghiChu"]');
+    var maBP = document.querySelector('input[name="maBP"]');
+    var tenBP = document.querySelector('input[name="tenBP"]');
+
+    ghiChu.value = ghiChuOld.innerText;
+    maBP.value = maBPOld.innerText;
+    tenBP.value = tenBPOld.innerText;
+
+    var createBtn = document.querySelector('.btn-create')
+    createBtn.innerText = "Lưu"
+
+    createBtn.onclick = function() {
+        var formData = {
+            GhiChu : ghiChu.value,
+            MaBP: maBP.value,
+            TenBP: tenBP.value
+        }
+    
+        updateBoPhan(id, formData, function() {
+            getBoPhan(renderBoPhan)
+        })
+    }
+}
+
+
+/**
+ * |-----------------------------------------------------------------------|
+ * |                            LOẠI HÀNG HÓA                              |
+ * |-----------------------------------------------------------------------|
+ */
+
+ var loaiHHApi = 'http://localhost:3000/loaiHH'
+
+function getLoaiHH(callback) {
+    fetch(loaiHHApi)
+        .then(response => response.json())
+        .then(callback);
+}
+ 
+function createLoaiHH(data, callback) {
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    }
+    fetch(loaiHHApi, options)
+        .then(response => response.json())
+        .then(callback)
+}
+ 
+function updateLoaiHH(id, data, callback) {
+    var options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    }
+    fetch(loaiHHApi + '/' + id, options)
+        .then(response => response.json())
+        .then(callback)
+}
+ 
+function renderLoaiHH(LoaiHHs) {
+    var listLoaiHHs = document.querySelector('.tableNhomVTHH tbody');
+
+    var htmls = LoaiHHs.map((LoaiHH) => 
+       `<tr class="table-data tb-LoaiHH Item-${LoaiHH.id}">
+           <td>${LoaiHH.id}</td>
+           <td class="tenLoaiHH-${LoaiHH.id}">${LoaiHH.TenLoaiHH}</td>
+           <button class="btn-size-s" onclick="handleDeleteLoaiHH(${LoaiHH.id})">Xóa</button>
+           <button class="btn-size-s" onclick="handleUpdateLoaiHH(${LoaiHH.id})">Sửa</button>
+       </tr>`
+    )
+
+    listLoaiHHs.innerHTML = htmls.join('');
+}
+ 
+function handleCreateLoaiHH() {
+    var createBtn = document.querySelector('.btn-create')
+ 
+    createBtn.onclick = () => {
+       var tenLoaiHH = document.querySelector('input[name="tenLoaiHH"]').value;
+ 
+       var formData = {
+           TenLoaiHH: tenLoaiHH
+       }
+ 
+       createLoaiHH(formData, () => getLoaiHH(renderLoaiHH));
+    }
+}
+ 
+function handleDeleteLoaiHH(id) {
+    var options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
+    }
+    fetch(loaiHHApi + '/' + id, options)
+        .then(response => response.json())
+        .then(function() {
+            var LoaiHHItem = document.querySelector('.Item-' + id);
+            if (LoaiHHItem) {
+                LoaiHHItem.remove();
+            }
+        })
+}
+ 
+function handleUpdateLoaiHH(id) {
+   var tenLoaiHHOld = document.querySelector('.tenLoaiHH-' + id);
+
+   var tenLoaiHH = document.querySelector('input[name="tenLoaiHH"]');
+
+   tenLoaiHH.value = tenLoaiHHOld.innerText;
+    
+   var createBtn = document.querySelector('.btn-create')
+   createBtn.innerText = "Lưu"
+   createBtn.onclick = function() {
+       var formData = {
+          TenLoaiHH: tenLoaiHH.value
+      }
+      updateLoaiHH(id, formData, () => getLoaiHH(renderLoaiHH))
+    }
+}
+
 
 /**
  * |-----------------------------------------------------------------------|
@@ -170,7 +685,7 @@ function handleUpdatePhieuNhap(id) {
     
     //Thay đổi tên nút
     var createBtn =document.querySelector('.btn-create')
-    createBtn.in = "Lưu"
+    createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
         var formData = {
@@ -352,7 +867,7 @@ function handleUpdatephieuXuat(id) {
     
     //Thay đổi tên nút
     var createBtn =document.querySelector('.btn-create')
-    createBtn.in = "Lưu"
+    createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
         var formData = {
@@ -535,7 +1050,7 @@ function handleUpdatephieuYeuCau(id) {
     
     //Thay đổi tên nút
     var createBtn =document.querySelector('.btn-create')
-    createBtn.in = "Lưu"
+    createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
         var formData = {
@@ -742,7 +1257,7 @@ function handleUpdatephieuKiemTra(id) {
     
     //Thay đổi tên nút
     var createBtn =document.querySelector('.btn-create')
-    createBtn.in = "Lưu"
+    createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
         var formData = {
@@ -768,6 +1283,18 @@ function handleUpdatephieuKiemTra(id) {
 }
 
 function main() {
+    getNhaCungCap(renderNhaCungCap);
+    handleCreateNhaCungCap();
+    
+    getNhanVien(renderNhanVien);
+    handleCreateNhanVien();
+    
+    getBoPhan(renderBoPhan);
+    handleCreateBoPhan();
+
+    getLoaiHH(renderLoaiHH);
+    handleCreateLoaiHH();
+
     getPhieuNhap(renderPhieuNhap);
     handleCreatePhieuNhap();
     
@@ -779,7 +1306,8 @@ function main() {
 
     getPhieuYeuCau(renderPhieuYeuCau);
     handleCreatePhieuYeuCau();
+
+
 }
 
 main();
-

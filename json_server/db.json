@@ -1,14 +1,45 @@
-
 {
   "boPhan": [
     {
-      "idMaBP": 1,
-      "TenBP": "Phòng kế toán"
+      "id": 1,
+      "MaBP": "PKT",
+      "TenBP": "Phòng kế toán",
+      "GhiChu": ""
+    },
+    {
+      "GhiChu": "",
+      "MaBP": "PKD",
+      "TenBP": "Phòng kinh doanh",
+      "id": 2
+    },
+    {
+      "GhiChu": "",
+      "MaBP": "BGD",
+      "TenBP": "Ban Giám Đốc",
+      "id": 3
+    },
+    {
+      "GhiChu": "",
+      "MaBP": "Kho",
+      "TenBP": "Kho",
+      "id": 4
+    },
+    {
+      "GhiChu": "",
+      "MaBP": "NS",
+      "TenBP": "Phòng nhân sự",
+      "id": 5
+    },
+    {
+      "GhiChu": "",
+      "MaBP": "",
+      "TenBP": "",
+      "id": 6
     }
   ],
   "nhanVien": [
     {
-      "idMaNV": 1,
+      "id": 1,
       "HoTenNV": "Trần Phan Hải Long",
       "GioiTinh": "Nam",
       "ChucVu": "Nhân viên",
@@ -19,7 +50,7 @@
   ],
   "nhaCungCap": [
     {
-      "idMaNCC": 1,
+      "id": 1,
       "TenNCC": "Khánh Việt",
       "DiaChiNCC": "",
       "MaLoaiHH": 1,
@@ -29,7 +60,7 @@
   ],
   "Kho": [
     {
-      "idMaKho": 1,
+      "id": 1,
       "TenKho": "",
       "DiaChiKho": "",
       "MaLoaiHH": ""
@@ -37,8 +68,8 @@
   ],
   "loaiHH": [
     {
-      "idMaLoaiHH": 1,
-      "TenLoaiHH": "Nguyên liệu chính"
+      "id": 1,
+      "TenLoaiHH": "Vải"
     }
   ],
   "hangHoa": [
