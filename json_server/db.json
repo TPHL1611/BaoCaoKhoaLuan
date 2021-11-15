@@ -43,7 +43,25 @@
       "HoTenNV": "Trần Phan Hải Long",
       "GioiTinh": "Nam",
       "ChucVu": "Nhân viên",
-      "BoPhan": "Phòng kế toán",
+      "BoPhan": "Phòng kinh doanh",
+      "EmailNV": "",
+      "SoDienThoaiNV": ""
+    },
+    {
+      "id": 2,
+      "HoTenNV": "Văn Công Thành",
+      "GioiTinh": "Nam",
+      "ChucVu": "Nhân viên",
+      "BoPhan": "Kho",
+      "EmailNV": "",
+      "SoDienThoaiNV": ""
+    },
+    {
+      "id": 3,
+      "HoTenNV": "Lại Ngọc Tiến",
+      "GioiTinh": "Nam",
+      "ChucVu": "Nhân viên",
+      "BoPhan": "Kho",
       "EmailNV": "",
       "SoDienThoaiNV": ""
     }
@@ -53,7 +71,15 @@
       "id": 1,
       "TenNCC": "Khánh Việt",
       "DiaChiNCC": "",
-      "MaLoaiHH": 1,
+      "MaLoaiHH": "1",
+      "SoDienThoaiNCC": "",
+      "EmailNCC": ""
+    },
+    {
+      "id": 2,
+      "TenNCC": "An Phát",
+      "DiaChiNCC": "",
+      "MaLoaiHH": "2",
       "SoDienThoaiNCC": "",
       "EmailNCC": ""
     }
@@ -61,25 +87,51 @@
   "Kho": [
     {
       "id": 1,
-      "TenKho": "",
+      "TenKho": "Nguyên liệu chính",
       "DiaChiKho": "",
-      "MaLoaiHH": ""
+      "MaLoaiHH": 1
     }
   ],
   "loaiHH": [
     {
       "id": 1,
       "TenLoaiHH": "Vải"
+    },
+    {
+      "id": 2,
+      "TenLoaiHH": "Phụ liệu may"
+    },
+    {
+      "id": 3,
+      "TenLoaiHH": "Phụ liệu đóng gói"
     }
   ],
   "hangHoa": [
     {
-      "idMaHH": 1,
+      "id": 1,
       "TenHH": "Vải cotton ",
       "SoLuong": "10000",
       "DonViTinh": "mét",
       "idMaNV": 1,
       "idMaLoaiHH": 1,
+      "GhiChu": ""
+    },
+    {
+      "id": 2,
+      "TenHH": "Thun lạnh",
+      "SoLuong": "5000",
+      "DonViTinh": "mét",
+      "idMaNV": 1,
+      "idMaLoaiHH": 1,
+      "GhiChu": ""
+    },
+    {
+      "id": 3,
+      "TenHH": "Nút",
+      "SoLuong": "10000",
+      "DonViTinh": "cái",
+      "idMaNV": 2,
+      "idMaLoaiHH": 2,
       "GhiChu": ""
     }
   ],
@@ -130,12 +182,12 @@
       "TenLoaiHH": "",
       "idMaHH": "",
       "TenHH": "",
-      "idMaNCC": "",
-      "TenNCC": "",
+      "idMaNCC": 1,
+      "TenNCC": "An Phát",
       "idMaNV": "",
       "HoTenNV": "",
-      "SoLuongYC": "",
-      "SoLuongKT": "",
+      "SoLuongYC": 5000,
+      "SoLuongKT": 5000,
       "TinhTrang": "",
       "NgayLapPKT": "",
       "GhiChu": ""
@@ -143,7 +195,7 @@
   ],
   "phieuYeuCau": [
     {
-      "id": 1,
+      "GhiChu": "",
       "idMaLoaiHH": "",
       "TenLoaiHH": "",
       "idMaHH": "",
@@ -152,7 +204,7 @@
       "HoTenNV": "",
       "SoLuongYC": "",
       "NgayLapPYC": "",
-      "GhiChu": ""
+      "id": 1
     }
   ],
   "hoaDon": [

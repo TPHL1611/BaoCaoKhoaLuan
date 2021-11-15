@@ -13,20 +13,20 @@
  }
  
  function createNhaCungCap(data, callback) {
-     var options = {
-         method: 'POST',
-         headers: {
-             'Content-Type': 'application/json'
-             // 'Content-Type': 'application/x-www-form-urlencoded',
-         },
-         body: JSON.stringify(data)
-     }
-     fetch(nhaCungCapApi, options)
-         .then(response => response.json())
-         .then(callback)
+    var options = {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json'
+           // 'Content-Type': 'application/x-www-form-urlencoded',
+       },
+       body: JSON.stringify(data)
+    }
+    fetch(nhaCungCapApi, options)
+        .then(response => response.json())
+        .then(callback)
  }
  
- function updateNhanVien(id, data, callback) {
+ function updateNhaCungCap(id, data, callback) {
      var options = {
          method: 'PATCH',
          headers: {
@@ -40,19 +40,19 @@
          .then(callback)
  }
  
- function renderNhaCungCap(NhaCungCaps) {
+ function renderNhaCungCap(nhaCungCaps) {
      var listNhaCungCaps = document.querySelector('.tableNCC tbody');
  
-     var htmls = NhaCungCaps.map((NhaCungCap) => 
-     `   <tr class="table-data tb-NhaCungCap Item-${NhaCungCap.id}">
-             <td>${NhaCungCap.id}</td>
-             <td class="tenNCC-${NhaCungCap.id}">${NhaCungCap.TenNCC}</td>
-             <td class="idMaLoaiHH-${NhaCungCap.id}">${NhaCungCap.MaLoaiHH}</td>
-             <td class="diaChiNCC-${NhaCungCap.id}">${NhaCungCap.DiaChiNCC}</td>
-             <td class="soDienThoaiNCC-${NhaCungCap.id}">${NhaCungCap.SoDienThoaiNCC}</td>
-             <td class="emailNCC-${NhaCungCap.id}">${NhaCungCap.EmailNCC}</td>
-             <button class="btn-size-s" onclick="handleDeleteNhaCungCap(${NhaCungCap.id})">Xóa</button>
-             <button class="btn-size-s" onclick="handleUpdateNhaCungCap(${NhaCungCap.id})">Sửa</button>
+     var htmls = nhaCungCaps.map((nhaCungCap) => 
+     `   <tr class="table-data tb-nhaCungCap Item-${nhaCungCap.id}">
+             <td>${nhaCungCap.id}</td>
+             <td class="tenNCC-${nhaCungCap.id}">${nhaCungCap.TenNCC}</td>
+             <td class="idMaLoaiHH-${nhaCungCap.id}">${nhaCungCap.MaLoaiHH}</td>
+             <td class="diaChiNCC-${nhaCungCap.id}">${nhaCungCap.DiaChiNCC}</td>
+             <td class="soDienThoaiNCC-${nhaCungCap.id}">${nhaCungCap.SoDienThoaiNCC}</td>
+             <td class="emailNCC-${nhaCungCap.id}">${nhaCungCap.EmailNCC}</td>
+             <button class="btn-size-s" onclick="handleDeleteNhaCungCap(${nhaCungCap.id})">Xóa</button>
+             <button class="btn-size-s" onclick="handleUpdateNhaCungCap(${nhaCungCap.id})">Sửa</button>
          </tr>`
      )
  
@@ -89,7 +89,7 @@
              // 'Content-Type': 'application/x-www-form-urlencoded',
          }
      }
-     fetch(NhaCungCapApi + '/' + id, options)
+     fetch(nhaCungCapApi + '/' + id, options)
          .then(response => response.json())
          .then(function() {
              var NhaCungCapItem = document.querySelector('.Item-' + id);
@@ -522,6 +522,270 @@ function handleUpdateLoaiHH(id) {
     }
 }
 
+/**
+ * |-----------------------------------------------------------------------|
+ * |                                 HÀNG HÓA                              |
+ * |-----------------------------------------------------------------------|
+ */
+
+ var hangHoaApi = 'http://localhost:3000/hangHoa'
+
+function getHangHoa(callback) {
+    fetch(hangHoaApi)
+        .then(response => response.json())
+        .then(callback);
+}
+ 
+function createHangHoa(data, callback) {
+     var options = {
+         method: 'POST',
+         headers: {
+             'Content-Type': 'application/json'
+             // 'Content-Type': 'application/x-www-form-urlencoded',
+         },
+         body: JSON.stringify(data)
+     }
+     fetch(hangHoaApi, options)
+         .then(response => response.json())
+         .then(callback)
+}
+ 
+function updateHangHoa(id, data, callback) {
+     var options = {
+         method: 'PATCH',
+         headers: {
+             'Content-Type': 'application/json'
+             // 'Content-Type': 'application/x-www-form-urlencoded',
+         },
+         body: JSON.stringify(data)
+     }
+     fetch(hangHoaApi + '/' + id, options)
+         .then(response => response.json())
+         .then(callback)
+}
+ 
+function renderHangHoa(hangHoas) {
+    var listHangHoas = document.querySelector('.tableHH tbody');
+
+    var htmls = hangHoas.map((hangHoa) => 
+    `   <tr class="table-data tb-hangHoa Item-${hangHoa.id}">
+            <td>${hangHoa.id}</td>
+            <td class="tenHH-${hangHoa.id}">${hangHoa.TenHH}</td>
+            <td class="soLuong-${hangHoa.id}">${hangHoa.SoLuong}</td>
+            <td class="donViTinh-${hangHoa.id}">${hangHoa.DonViTinh}</td>
+            <td class="idMaNV-${hangHoa.id}">${hangHoa.idMaNV}</td>
+            <td class="idMaLoaiHH-${hangHoa.id}">${hangHoa.idMaLoaiHH}</td>
+            <td class="ghiChu-${hangHoa.id}">${hangHoa.GhiChu}</td>
+            <button class="btn-size-s" onclick="handleDeleteHangHoa(${hangHoa.id})">Xóa</button>
+            <button class="btn-size-s" onclick="handleUpdateHangHoa(${hangHoa.id})">Sửa</button>
+        </tr>`
+    )
+
+    listHangHoas.innerHTML = htmls.join('');
+}
+
+function handleCreateHangHoa() {
+    var createBtn = document.querySelector('.btn-create')
+
+    createBtn.onclick = () => {
+        var tenHH = document.querySelector('input[name="tenHH"]').value;
+        var soLuong = document.querySelector('input[name="soLuong"]').value;
+        var donViTinh = document.querySelector('input[name="donViTinh"]').value;
+        var idMaNV = document.querySelector('input[name="maNV"]').value;
+        var idMaLoaiHH = document.querySelector('input[name="maLoaiHH"]').value;
+        var ghiChu = document.querySelector('input[name="ghiChu"]').value;
+
+        var formData = {
+           TenHH: tenHH,
+           SoLuong: soLuong,
+           DonViTinh: donViTinh,
+           idMaNV: idMaNV,
+           idMaLoaiHH: idMaLoaiHH,
+           GhiChu: ghiChu
+        }
+
+        createHangHoa(formData, () => getHangHoa(renderHangHoa));
+    }
+}
+
+function handleDeleteHangHoa(id) {
+    var options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
+    }
+    fetch(hangHoaApi + '/' + id, options)
+        .then(response => response.json())
+        .then(function() {
+            var hangHoaItem = document.querySelector('.Item-' + id);
+            if (hangHoaItem) {
+                hangHoaItem.remove();
+            }
+        })
+}
+
+function handleUpdateHangHoa(id) {
+    var tenHHOld = document.querySelector('.tenHH-' + id);
+    var soLuongOld = document.querySelector('.soLuong-' + id);
+    var donViTinhOld = document.querySelector('.donViTinh-' + id);
+    var idMaNVOld = document.querySelector('.maNV-' + id);
+    var idMaLoaiHHOld = document.querySelector('.maLoaiHH-' + id);
+    var ghiChuOld = document.querySelector('.ghiChu-' + id);
+
+    var tenHH = document.querySelector('input[name="tenHH"]');
+    var soLuong = document.querySelector('input[name="soLuong"]');
+    var donViTinh = document.querySelector('input[name="donViTinh"]');
+    var idMaNV = document.querySelector('input[name="maNV"]');
+    var idMaLoaiHH = document.querySelector('input[name="maLoaiHH"]');
+    var ghiChu = document.querySelector('input[name="ghiChu"]');
+
+    tenHH.value = tenHHOld.innerText;
+    soLuong.value = soLuongOld.innerText;
+    donViTinh.value = donViTinhOld.innerText;
+    idMaNV.value = idMaNVOld.innerText;
+    idMaLoaiHH.value = idMaLoaiHHOld.innerText;
+    ghiChu.value = ghiChuOld.innerText;
+    
+    var createBtn = document.querySelector('.btn-create')
+    createBtn.innerText = "Lưu"
+
+    createBtn.onclick = function() {
+        var formData = {
+           TenHH: tenHH.value,
+           SoLuong: soLuong.value,
+           DonViTinh: donViTinh.value,
+           idMaNV: idMaNV.value,
+           idMaLoaiHH: idMaLoaiHH.value,
+           GhiChu: ghiChu.value
+        }
+
+        updateHangHoa(id, formData, () => getHangHoa(renderHangHoa))
+    }
+}
+ 
+
+/**
+ * |-----------------------------------------------------------------------|
+ * |                                  KHO                                  |
+ * |-----------------------------------------------------------------------|
+ */
+
+ var khoApi = 'http://localhost:3000/Kho'
+
+function getKho(callback) {
+    fetch(khoApi)
+        .then(response => response.json())
+        .then(callback);
+}
+ 
+function createKho(data, callback) {
+    var options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    }
+    fetch(khoApi, options)
+        .then(response => response.json())
+        .then(callback)
+}
+ 
+function updateKho(id, data, callback) {
+    var options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data)
+    }
+    fetch(khoApi + '/' + id, options)
+        .then(response => response.json())
+        .then(callback)
+}
+ 
+function renderKho(Khos) {
+    var listKhos = document.querySelector('.tableKho tbody');
+
+    var htmls = Khos.map((Kho) => 
+       `<tr class="table-data tb-Kho Item-${Kho.id}">
+           <td>${Kho.id}</td>
+           <td class="tenKho-${Kho.id}">${Kho.TenKho}</td>
+           <td class="idMaLoaiHH-${Kho.id}">${Kho.MaLoaiHH}</td>
+           <td class="diaChiKho-${Kho.id}">${Kho.DiaChiKho}</td>
+           <button class="btn-size-s" onclick="handleDeleteKho(${Kho.id})">Xóa</button>
+           <button class="btn-size-s" onclick="handleUpdateKho(${Kho.id})">Sửa</button>
+       </tr>`
+    )
+
+    listKhos.innerHTML = htmls.join('');
+}
+ 
+function handleCreateKho() {
+    var createBtn = document.querySelector('.btn-create')
+ 
+    createBtn.onclick = () => {
+       var tenKho = document.querySelector('input[name="tenKho"]').value;
+       var idMaLoaiHH = document.querySelector('input[name="maLoaiHH"]').value;
+       var diaChiKho = document.querySelector('input[name="diaChiKho"]').value;
+ 
+       var formData = {
+            TenKho: tenKho,
+            MaLoaiHH: idMaLoaiHH,
+            DiaChiKho: diaChiKho
+       }
+ 
+       createKho(formData, () => getKho(renderKho));
+    }
+}
+ 
+function handleDeleteKho(id) {
+    var options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
+    }
+    fetch(khoApi + '/' + id, options)
+        .then(response => response.json())
+        .then(function() {
+            var KhoItem = document.querySelector('.Item-' + id);
+            if (KhoItem) {
+                KhoItem.remove();
+            }
+        })
+}
+ 
+function handleUpdateKho(id) {
+   var tenKhoOld = document.querySelector('.tenKho-' + id);
+   var idMaLoaiHHOld = document.querySelector('.idMaLoaiHH-' + id);
+   var diaChiKhoOld = document.querySelector('.diaChiKho-' + id);
+
+   var tenKho = document.querySelector('input[name="tenKho"]');
+   var idMaLoaiHH = document.querySelector('input[name="maLoaiHH"]');
+   var diaChiKho = document.querySelector('input[name="diaChiKho"]');
+
+   tenKho.value = tenKhoOld.innerText;
+   idMaLoaiHH.value = idMaLoaiHHOld.innerText;
+   diaChiKho.value = diaChiKhoOld.innerText;
+    
+   var createBtn = document.querySelector('.btn-create')
+   createBtn.innerText = "Lưu"
+   
+   createBtn.onclick = function() {
+       var formData = {
+          TenKho: tenKho.value,
+          MaLoaiHH: idMaLoaiHH.value,
+          DiaChiKho: diaChiKho.value
+      }
+      updateKho(id, formData, () => getKho(renderKho))
+    }
+}
 
 /**
  * |-----------------------------------------------------------------------|
@@ -949,9 +1213,9 @@ function renderPhieuYeuCau(phieuYeuCaus) {
             <td class="tenLoaiHH-${phieuYeuCau.id}">${phieuYeuCau.TenLoaiHH}</td>
             <td class="maHH-${phieuYeuCau.id}">${phieuYeuCau.idMaHH}</td>
             <td class="tenHH-${phieuYeuCau.id}">${phieuYeuCau.TenHH}</td>
+            <td class="soLuongYeuCau-${phieuYeuCau.id}">${phieuYeuCau.SoLuongYC}</td>
             <td class="maNV-${phieuYeuCau.id}">${phieuYeuCau.idMaNV}</td>
             <td class="tenNV-${phieuYeuCau.id}">${phieuYeuCau.HoTenNV}</td>
-            <td class="soLuongYeuCau-${phieuYeuCau.id}">${phieuYeuCau.soLuongYC}</td>
             <td class="ngayYeuCau-${phieuYeuCau.id}">${phieuYeuCau.NgayLapPYC}</td>
             <td class="ghiChu-${phieuYeuCau.id}">${phieuYeuCau.GhiChu}</td>
             <button class="btn-size-s" onclick="handleDeletephieuYeuCau(${phieuYeuCau.id})">Xóa</button>
@@ -1049,10 +1313,13 @@ function handleUpdatephieuYeuCau(id) {
     ngayLapPhieu.value = ngayLapPhieuOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn =document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-create')
+    console.log(createBtn);
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
+        console.log(createBtn);
+
         var formData = {
             GhiChu: ghiChu.value,
             idMaLoaiHH : maLoaiHH.value,
@@ -1136,8 +1403,8 @@ function renderPhieuKiemTra(phieuKiemTras) {
             <td class="tenNCC-${phieuKiemTra.id}">${phieuKiemTra.TenNCC}</td>
             <td class="maNV-${phieuKiemTra.id}">${phieuKiemTra.idMaNV}</td>
             <td class="tenNV-${phieuKiemTra.id}">${phieuKiemTra.HoTenNV}</td>
-            <td class="soLuongKiemTra-${phieuKiemTra.id}">${phieuKiemTra.soLuongKT}</td>
-            <td class="soLuongYeuCau-${phieuKiemTra.id}">${phieuKiemTra.soLuongYC}</td>
+            <td class="soLuongKiemTra-${phieuKiemTra.id}">${phieuKiemTra.SoLuongKT}</td>
+            <td class="soLuongYeuCau-${phieuKiemTra.id}">${phieuKiemTra.SoLuongYC}</td>
             <td class="ngayKiemTra-${phieuKiemTra.id}">${phieuKiemTra.NgayLapPKT}</td>
             <td class="ghiChu-${phieuKiemTra.id}">${phieuKiemTra.GhiChu}</td>
             <td class="tinhTrang-${phieuKiemTra.id}">${phieuKiemTra.TinhTrang}</td>
@@ -1295,6 +1562,12 @@ function main() {
     getLoaiHH(renderLoaiHH);
     handleCreateLoaiHH();
 
+    getHangHoa(renderHangHoa);
+    handleCreateHangHoa();
+
+    getKho(renderKho);
+    handleCreateKho();
+
     getPhieuNhap(renderPhieuNhap);
     handleCreatePhieuNhap();
     
@@ -1306,8 +1579,6 @@ function main() {
 
     getPhieuYeuCau(renderPhieuYeuCau);
     handleCreatePhieuYeuCau();
-
-
 }
 
 main();
