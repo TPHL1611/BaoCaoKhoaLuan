@@ -208,5 +208,27 @@
       "NgayLapHD": "",
       "GhiChu": ""
     }
+  ],
+  "baoCaoNhapKho": [
+    {
+      "id": 1,
+      "NgayNhapKho": "19/11/2020",
+      "idMaLoaiHH": 1,
+      "TenLoaiHH": "Vải",
+      "idMaHH": 2,
+      "TenHH": "Thun lạnh",
+      "SoLuongNhap": 10000
+    }
+  ],
+  "baoCaoXuatKho": [
+    {
+      "id": 1,
+      "NgayXuatKho": "20/11/2020",
+      "idMaLoaiHH": 1,
+      "TenLoaiHH": "Vải",
+      "idMaHH": 2,
+      "TenHH": "Thun lạnh",
+      "SoLuongXuat": 10000
+    }
   ]
 }

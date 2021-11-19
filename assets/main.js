@@ -86,28 +86,25 @@ function getPhieu() {
  }
  
  function handleCreateNhaCungCap() {
-         var createBtn = document.querySelector('.btn-createNCC')
-
-         createBtn.onclick = () => {
-            // console.log(this);            
-            var tenNCC = document.querySelector('input[name="tenNCC"]').value;
-            var emailNCC = document.querySelector('input[name="email"]').value;
-            var tenLoaiHH = document.querySelector('input[name="tenLoaiHH"]').value;
-            var diaChiNCC = document.querySelector('input[name="diaChi"]').value;
-            var soDienThoaiNCC = document.querySelector('input[name="lienLac"]').value;
-     
-            var formData = {
-               TenNCC: tenNCC,
-               EmailNCC: emailNCC,
-               TenLoaiHH: tenLoaiHH,
-               DiaChiNCC: diaChiNCC,
-               SoDienThoaiNCC: soDienThoaiNCC
-            }
-     
-            createNhaCungCap(formData, () => getNhaCungCap(renderNhaCungCap));
-         }
-     
- }
+    const createBtn = document.querySelector('.btn-createNCC')
+    createBtn.onclick = () => {          
+        var tenNCC = document.querySelector('input[name="tenNCC"]').value;
+        var emailNCC = document.querySelector('input[name="email"]').value;
+        var tenLoaiHH = document.querySelector('input[name="tenLoaiHH"]').value;
+        var diaChiNCC = document.querySelector('input[name="diaChi"]').value;
+        var soDienThoaiNCC = document.querySelector('input[name="lienLac"]').value;
+    
+        var formData = {
+           TenNCC: tenNCC,
+           EmailNCC: emailNCC,
+           TenLoaiHH: tenLoaiHH,
+           DiaChiNCC: diaChiNCC,
+           SoDienThoaiNCC: soDienThoaiNCC
+        }
+    
+        createNhaCungCap(formData, () => getNhaCungCap(renderNhaCungCap));
+    }
+}
  
  function handleDeleteNhaCungCap(id) {
      var options = {
@@ -146,9 +143,9 @@ function getPhieu() {
     soDienThoaiNCC.value = soDienThoaiNCCOld.innerText;
     emailNCC.value = emailNCCOld.innerText;
      
-    var createBtn = document.querySelector('.btn-createNCC')
+    const createBtn = document.querySelector('.btn-createNCC')
 
-        createBtn.innerText = "Lưu"
+    createBtn.innerText = "Lưu"
 
         createBtn.onclick = function() {
             var formData = {
@@ -226,10 +223,8 @@ function renderNhanVien(nhanViens) {
 }
 
 function handleCreateNhanVien() {
-    var createBtn = document.querySelector('.btn-createNV')
-
-
-        createBtn.onclick = () => {
+    const createBtn = document.querySelector('.btn-createNV')
+    createBtn.onclick = () => {
         var tenNV = document.querySelector('input[name="tenNV"]').value;
         var email = document.querySelector('input[name="email"]').value;
         var gioiTinh = document.querySelector('input[name="gender"]').value;
@@ -290,8 +285,8 @@ function handleUpdateNhanVien(id) {
     phongBan.value = boPhanOld.innerText;
     lienLac.value = soDienThoaiOld.innerText;
     
-    var createBtn = document.querySelector('.btn-createNV')
-        createBtn.innerText = "Lưu"
+    const createBtn = document.querySelector('.btn-createNV')
+    createBtn.innerText = "Lưu"
 
         createBtn.onclick = function() {
         var formData = {
@@ -376,7 +371,7 @@ function renderBoPhan(BoPhans) {
 }
 
 function handleCreateBoPhan() {
-    var createBtn = document.querySelector('.btn-createBP')
+    const createBtn = document.querySelector('.btn-createBP')
 
     createBtn.onclick = function() {
         var ghiChu = document.querySelector('input[name="ghiChu"]').value;
@@ -429,7 +424,7 @@ function handleUpdateBoPhan(id) {
     maBP.value = maBPOld.innerText;
     tenBP.value = tenBPOld.innerText;
 
-    var createBtn = document.querySelector('.btn-createBP')
+    const createBtn = document.querySelector('.btn-createBP')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -504,7 +499,7 @@ function renderLoaiHH(LoaiHHs) {
 }
  
 function handleCreateLoaiHH() {
-    var createBtn = document.querySelector('.btn-createNhomVTHH')
+    const createBtn = document.querySelector('.btn-createNhomVTHH')
  
     createBtn.onclick = () => {
        var tenLoaiHH = document.querySelector('input[name="tenLoaiHH"]').value;
@@ -542,7 +537,7 @@ function handleUpdateLoaiHH(id) {
 
    tenLoaiHH.value = tenLoaiHHOld.innerText;
     
-   var createBtn = document.querySelector('.btn-createNhomVTHH')
+   const createBtn = document.querySelector('.btn-createNhomVTHH')
    createBtn.innerText = "Lưu"
 
    createBtn.onclick = function() {
@@ -616,7 +611,7 @@ function renderHangHoa(hangHoas) {
 }
 
 function handleCreateHangHoa() {
-    var createBtn = document.querySelector('.btn-createVTHH')
+    const createBtn = document.querySelector('.btn-createVTHH')
 
     createBtn.onclick = () => {
         var tenHH = document.querySelector('input[name="tenHH"]').value;
@@ -679,7 +674,7 @@ function handleUpdateHangHoa(id) {
     idMaLoaiHH.value = idMaLoaiHHOld.innerText;
     ghiChu.value = ghiChuOld.innerText;
     
-    var createBtn = document.querySelector('.btn-createVTHH')
+    const createBtn = document.querySelector('.btn-createVTHH')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -757,7 +752,7 @@ function renderKho(Khos) {
 }
  
 function handleCreateKho() {
-    var createBtn = document.querySelector('.btn-createKho')
+    const createBtn = document.querySelector('.btn-createKho')
  
     createBtn.onclick = () => {
        var tenKho = document.querySelector('input[name="tenKho"]').value;
@@ -805,7 +800,7 @@ function handleUpdateKho(id) {
    idMaLoaiHH.value = idMaLoaiHHOld.innerText;
    diaChiKho.value = diaChiKhoOld.innerText;
     
-   var createBtn = document.querySelector('.btn-createKho')
+   const createBtn = document.querySelector('.btn-createKho')
    createBtn.innerText = "Lưu"
    
    createBtn.onclick = function() {
@@ -892,7 +887,7 @@ function renderPhieuNhap(phieuNhaps) {
 }
 
 function handleCreatePhieuNhap() {
-    var createBtn = document.querySelector('.btn-createPN')
+    const createBtn = document.querySelector('.btn-createPN')
 
     createBtn.onclick = function() {
         var ghiChu = document.querySelector('input[name="ghiChu"]').value;
@@ -979,7 +974,7 @@ function handleUpdatePhieuNhap(id) {
     ngayNhap.value = ngayNhapOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn =document.querySelector('.btn-createPN')
+    const createBtn =document.querySelector('.btn-createPN')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -1074,7 +1069,7 @@ function renderPhieuXuat(phieuXuats) {
 }
 
 function handleCreatePhieuXuat() {
-    var createBtn = document.querySelector('.btn-createPX')
+    const createBtn = document.querySelector('.btn-createPX')
 
     createBtn.onclick = function() {
         var ghiChu = document.querySelector('input[name="ghiChu"]').value;
@@ -1161,7 +1156,7 @@ function handleUpdatephieuXuat(id) {
     ngayXuat.value = ngayXuatOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn =document.querySelector('.btn-createPX')
+    const createBtn =document.querySelector('.btn-createPX')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -1257,7 +1252,7 @@ function renderPhieuYeuCau(phieuYeuCaus) {
 }
 
 function handleCreatePhieuYeuCau() {
-    var createBtn = document.querySelector('.btn-createPYC')
+    const createBtn = document.querySelector('.btn-createPYC')
 
     createBtn.onclick = function() {
         var ghiChu = document.querySelector('input[name="ghiChu"]').value;
@@ -1344,7 +1339,7 @@ function handleUpdatephieuYeuCau(id) {
     ngayLapPhieu.value = ngayLapPhieuOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn = document.querySelector('.btn-createPYC')
+    const createBtn = document.querySelector('.btn-createPYC')
     console.log(createBtn);
     createBtn.innerText = "Lưu"
 
@@ -1447,7 +1442,7 @@ function renderPhieuKiemTra(phieuKiemTras) {
 }
 
 function handleCreatePhieuKiemTra() {
-    var createBtn = document.querySelector('.btn-createPKT')
+    const createBtn = document.querySelector('.btn-createPKT')
 
     createBtn.onclick = function() {
         var tinhTrang = document.querySelector('input[name="tinhTrang"]').value;
@@ -1554,7 +1549,7 @@ function handleUpdatephieuKiemTra(id) {
     ngayLapPhieu.value = ngayLapPhieuOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn = document.querySelector('.btn-createPKT')
+    const createBtn = document.querySelector('.btn-createPKT')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -1578,6 +1573,70 @@ function handleUpdatephieuKiemTra(id) {
             getPhieuKiemTra(renderPhieuKiemTra);
         })
     }
+}
+
+/**
+ * |-----------------------------------------------------------------------|
+ * |                            BÁO CÁO NHẬP KHO                           |
+ * |-----------------------------------------------------------------------|
+ */
+
+ var BCNKApi = 'http://localhost:3000/baoCaoNhapKho'
+
+function getBCNK(callback) {
+    fetch(BCNKApi)
+        .then(response => response.json())
+        .then(callback);
+}
+  
+function renderBCNK(BCNKs) {
+    var listBCNKs = document.querySelector('.tableBCNK tbody');
+
+    var htmls = BCNKs.map((BCNK) => 
+       `<tr class="table-data tb-BCNK Item-${BCNK.id}">
+           <td>${BCNK.NgayNhapKho}</td>
+           <td>${BCNK.id}</td>
+           <td class="idMaLoaiHH-${BCNK.id}">${BCNK.idMaLoaiHH}</td>
+           <td class="tenLoaiHH-${BCNK.id}">${BCNK.TenLoaiHH}</td>
+           <td class="idMaHH-${BCNK.id}">${BCNK.idMaHH}</td>
+           <td class="tenHH-${BCNK.id}">${BCNK.TenHH}</td>
+           <td class="soLuongXuat-${BCNK.id}">${BCNK.SoLuongNhap}</td>
+       </tr>`
+    )
+
+    listBCNKs.innerHTML = htmls.join('');
+}
+
+/**
+ * |-----------------------------------------------------------------------|
+ * |                            BÁO CÁO XUẤT KHO                           |
+ * |-----------------------------------------------------------------------|
+ */
+
+ var BCXKApi = 'http://localhost:3000/baoCaoXuatKho'
+
+function getBCXK(callback) {
+    fetch(BCXKApi)
+        .then(response => response.json())
+        .then(callback);
+}
+  
+function renderBCXK(BCXKs) {
+    var listBCXKs = document.querySelector('.tableBCXK tbody');
+
+    var htmls = BCXKs.map((BCXK) => 
+       `<tr class="table-data tb-BCNK Item-${BCXK.id}">
+           <td>${BCXK.NgayXuatKho}</td>
+           <td>${BCXK.id}</td>
+           <td class="idMaLoaiHH-${BCXK.id}">${BCXK.idMaLoaiHH}</td>
+           <td class="tenLoaiHH-${BCXK.id}">${BCXK.TenLoaiHH}</td>
+           <td class="idMaHH-${BCXK.id}">${BCXK.idMaHH}</td>
+           <td class="tenHH-${BCXK.id}">${BCXK.TenHH}</td>
+           <td class="soLuongXuat-${BCXK.id}">${BCXK.SoLuongXuat}</td>
+       </tr>`
+    )
+
+    listBCXKs.innerHTML = htmls.join('');
 }
 
 function main() {
@@ -1613,6 +1672,9 @@ function main() {
     getPhieuYeuCau(renderPhieuYeuCau);
     handleCreatePhieuYeuCau();
     
+    getBCNK(renderBCNK);
+
+    getBCXK(renderBCXK);
 }
 
 main();

@@ -443,6 +443,6 @@ th, td {
 }
 
 
-.baoCao {
-    display: block;
+.btn-BaoCao {
+    float: right;
 }
