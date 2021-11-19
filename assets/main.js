@@ -1,3 +1,29 @@
+const content = document.getElementById('content')
+const phieus = document.querySelectorAll('.phieu')
+const btns = document.querySelectorAll('.js-phieu')
+var createBtns = document.querySelectorAll('.btn-create');
+
+//PHIEU
+
+function getPhieu() {
+    btns.forEach(function(btn, index) {
+        const phieu = phieus[index];
+        // var createBtn = createBtns[index];
+    
+        btn.onclick = function() {
+            document.querySelector('.js-phieu.open').classList.remove('open');
+            document.querySelector('.phieu.open').classList.remove('open');
+            // document.querySelector('.btn-create').classList.remove('active');
+    
+            content.classList.add('open');
+            this.classList.add('open');
+            phieu.classList.add('open');
+            // createBtn.classList.add('active');
+            
+        }
+    })
+}
+
 /**
  * |-----------------------------------------------------------------------|
  * |                            NHÀ CUNG CẤP                               |
@@ -47,7 +73,7 @@
      `   <tr class="table-data tb-nhaCungCap Item-${nhaCungCap.id}">
              <td>${nhaCungCap.id}</td>
              <td class="tenNCC-${nhaCungCap.id}">${nhaCungCap.TenNCC}</td>
-             <td class="idMaLoaiHH-${nhaCungCap.id}">${nhaCungCap.MaLoaiHH}</td>
+             <td class="idMaLoaiHH-${nhaCungCap.id}">${nhaCungCap.TenLoaiHH}</td>
              <td class="diaChiNCC-${nhaCungCap.id}">${nhaCungCap.DiaChiNCC}</td>
              <td class="soDienThoaiNCC-${nhaCungCap.id}">${nhaCungCap.SoDienThoaiNCC}</td>
              <td class="emailNCC-${nhaCungCap.id}">${nhaCungCap.EmailNCC}</td>
@@ -60,25 +86,27 @@
  }
  
  function handleCreateNhaCungCap() {
-     var createBtn = document.querySelector('.btn-create')
- 
-     createBtn.onclick = () => {
-        var tenNCC = document.querySelector('input[name="tenNCC"]').value;
-        var emailNCC = document.querySelector('input[name="email"]').value;
-        var idMaLoaiHH = document.querySelector('input[name="idMaLoaiHH"]').value;
-        var diaChiNCC = document.querySelector('input[name="diaChi"]').value;
-        var soDienThoaiNCC = document.querySelector('input[name="lienLac"]').value;
- 
-        var formData = {
-           TenNCC: tenNCC,
-           EmailNCC: emailNCC,
-           MaLoaiHH: idMaLoaiHH,
-           DiaChiNCC: diaChiNCC,
-           SoDienThoaiNCC: soDienThoaiNCC
-        }
- 
-        createNhaCungCap(formData, () => getNhaCungCap(renderNhaCungCap));
-     }
+         var createBtn = document.querySelector('.btn-createNCC')
+
+         createBtn.onclick = () => {
+            // console.log(this);            
+            var tenNCC = document.querySelector('input[name="tenNCC"]').value;
+            var emailNCC = document.querySelector('input[name="email"]').value;
+            var tenLoaiHH = document.querySelector('input[name="tenLoaiHH"]').value;
+            var diaChiNCC = document.querySelector('input[name="diaChi"]').value;
+            var soDienThoaiNCC = document.querySelector('input[name="lienLac"]').value;
+     
+            var formData = {
+               TenNCC: tenNCC,
+               EmailNCC: emailNCC,
+               TenLoaiHH: tenLoaiHH,
+               DiaChiNCC: diaChiNCC,
+               SoDienThoaiNCC: soDienThoaiNCC
+            }
+     
+            createNhaCungCap(formData, () => getNhaCungCap(renderNhaCungCap));
+         }
+     
  }
  
  function handleDeleteNhaCungCap(id) {
@@ -101,37 +129,38 @@
  
  function handleUpdateNhaCungCap(id) {
     var tenNCCOld = document.querySelector('.tenNCC-' + id);
-    var idMaLoaiHHOld = document.querySelector('.idMaLoaiHH-' + id);
+    var tenLoaiHHOld = document.querySelector('.tenLoaiHH-' + id);
     var diaChiNCCOld = document.querySelector('.diaChiNCC-' + id);
     var soDienThoaiNCCOld = document.querySelector('.soDienThoaiNCC-' + id);
     var emailNCCOld = document.querySelector('.emailNCC-' + id);
  
     var tenNCC = document.querySelector('input[name="tenNCC"]');
-    var idMaLoaiHH = document.querySelector('input[name="idMaLoaiHH"]');
+    var tenLoaiHH = document.querySelector('input[name="tenLoaiHH"]');
     var diaChiNCC = document.querySelector('input[name="diaChi"]');
     var soDienThoaiNCC = document.querySelector('input[name="lienLac"]');
     var emailNCC = document.querySelector('input[name="email"]');
  
     tenNCC.value = tenNCCOld.innerText;
-    idMaLoaiHH.value = idMaLoaiHHOld.innerText;
+    tenLoaiHH.value = tenLoaiHHOld.innerText;
     diaChiNCCOld.value = diaChiNCC.innerText;
     soDienThoaiNCC.value = soDienThoaiNCCOld.innerText;
     emailNCC.value = emailNCCOld.innerText;
      
-    var createBtn = document.querySelector('.btn-create')
-    createBtn.innerText = "Lưu"
+    var createBtn = document.querySelector('.btn-createNCC')
 
-    createBtn.onclick = function() {
-        var formData = {
-            TenNCC: tenNCC.value,
-            MaLoaiHH: idMaLoaiHH.value,
-            DiaChiNCC: diaChiNCCOld.value,
-            SoDienThoaiNCC: soDienThoaiNCC.value,
-            EmailNCC: emailNCC.value
+        createBtn.innerText = "Lưu"
+
+        createBtn.onclick = function() {
+            var formData = {
+                TenNCC: tenNCC.value,
+                TenLoaiHH: tenLoaiHH.value,
+                DiaChiNCC: diaChiNCCOld.value,
+                SoDienThoaiNCC: soDienThoaiNCC.value,
+                EmailNCC: emailNCC.value
+            }
+    
+            updateNhaCungCap(id, formData, () => getNhaCungCap(renderNhaCungCap))
         }
- 
-        updateNhaCungCap(id, formData, () => getNhaCungCap(renderNhaCungCap))
-    }
 }
 
 /**
@@ -197,9 +226,10 @@ function renderNhanVien(nhanViens) {
 }
 
 function handleCreateNhanVien() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createNV')
 
-    createBtn.onclick = () => {
+
+        createBtn.onclick = () => {
         var tenNV = document.querySelector('input[name="tenNV"]').value;
         var email = document.querySelector('input[name="email"]').value;
         var gioiTinh = document.querySelector('input[name="gender"]').value;
@@ -260,10 +290,10 @@ function handleUpdateNhanVien(id) {
     phongBan.value = boPhanOld.innerText;
     lienLac.value = soDienThoaiOld.innerText;
     
-    var createBtn = document.querySelector('.btn-create')
-    createBtn.innerText = "Lưu"
+    var createBtn = document.querySelector('.btn-createNV')
+        createBtn.innerText = "Lưu"
 
-    createBtn.onclick = function() {
+        createBtn.onclick = function() {
         var formData = {
             HoTenNV: tenNV.value,
             GioiTinh: gioiTinh.value,
@@ -346,7 +376,7 @@ function renderBoPhan(BoPhans) {
 }
 
 function handleCreateBoPhan() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createBP')
 
     createBtn.onclick = function() {
         var ghiChu = document.querySelector('input[name="ghiChu"]').value;
@@ -399,7 +429,7 @@ function handleUpdateBoPhan(id) {
     maBP.value = maBPOld.innerText;
     tenBP.value = tenBPOld.innerText;
 
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createBP')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -474,7 +504,7 @@ function renderLoaiHH(LoaiHHs) {
 }
  
 function handleCreateLoaiHH() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createNhomVTHH')
  
     createBtn.onclick = () => {
        var tenLoaiHH = document.querySelector('input[name="tenLoaiHH"]').value;
@@ -512,8 +542,9 @@ function handleUpdateLoaiHH(id) {
 
    tenLoaiHH.value = tenLoaiHHOld.innerText;
     
-   var createBtn = document.querySelector('.btn-create')
+   var createBtn = document.querySelector('.btn-createNhomVTHH')
    createBtn.innerText = "Lưu"
+
    createBtn.onclick = function() {
        var formData = {
           TenLoaiHH: tenLoaiHH.value
@@ -585,7 +616,7 @@ function renderHangHoa(hangHoas) {
 }
 
 function handleCreateHangHoa() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createVTHH')
 
     createBtn.onclick = () => {
         var tenHH = document.querySelector('input[name="tenHH"]').value;
@@ -648,7 +679,7 @@ function handleUpdateHangHoa(id) {
     idMaLoaiHH.value = idMaLoaiHHOld.innerText;
     ghiChu.value = ghiChuOld.innerText;
     
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createVTHH')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -726,7 +757,7 @@ function renderKho(Khos) {
 }
  
 function handleCreateKho() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createKho')
  
     createBtn.onclick = () => {
        var tenKho = document.querySelector('input[name="tenKho"]').value;
@@ -774,7 +805,7 @@ function handleUpdateKho(id) {
    idMaLoaiHH.value = idMaLoaiHHOld.innerText;
    diaChiKho.value = diaChiKhoOld.innerText;
     
-   var createBtn = document.querySelector('.btn-create')
+   var createBtn = document.querySelector('.btn-createKho')
    createBtn.innerText = "Lưu"
    
    createBtn.onclick = function() {
@@ -861,7 +892,7 @@ function renderPhieuNhap(phieuNhaps) {
 }
 
 function handleCreatePhieuNhap() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createPN')
 
     createBtn.onclick = function() {
         var ghiChu = document.querySelector('input[name="ghiChu"]').value;
@@ -948,7 +979,7 @@ function handleUpdatePhieuNhap(id) {
     ngayNhap.value = ngayNhapOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn =document.querySelector('.btn-create')
+    var createBtn =document.querySelector('.btn-createPN')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -1043,7 +1074,7 @@ function renderPhieuXuat(phieuXuats) {
 }
 
 function handleCreatePhieuXuat() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createPX')
 
     createBtn.onclick = function() {
         var ghiChu = document.querySelector('input[name="ghiChu"]').value;
@@ -1130,7 +1161,7 @@ function handleUpdatephieuXuat(id) {
     ngayXuat.value = ngayXuatOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn =document.querySelector('.btn-create')
+    var createBtn =document.querySelector('.btn-createPX')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -1226,7 +1257,7 @@ function renderPhieuYeuCau(phieuYeuCaus) {
 }
 
 function handleCreatePhieuYeuCau() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createPYC')
 
     createBtn.onclick = function() {
         var ghiChu = document.querySelector('input[name="ghiChu"]').value;
@@ -1313,7 +1344,7 @@ function handleUpdatephieuYeuCau(id) {
     ngayLapPhieu.value = ngayLapPhieuOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createPYC')
     console.log(createBtn);
     createBtn.innerText = "Lưu"
 
@@ -1416,7 +1447,7 @@ function renderPhieuKiemTra(phieuKiemTras) {
 }
 
 function handleCreatePhieuKiemTra() {
-    var createBtn = document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createPKT')
 
     createBtn.onclick = function() {
         var tinhTrang = document.querySelector('input[name="tinhTrang"]').value;
@@ -1523,7 +1554,7 @@ function handleUpdatephieuKiemTra(id) {
     ngayLapPhieu.value = ngayLapPhieuOld.innerText;
     
     //Thay đổi tên nút
-    var createBtn =document.querySelector('.btn-create')
+    var createBtn = document.querySelector('.btn-createPKT')
     createBtn.innerText = "Lưu"
 
     createBtn.onclick = function() {
@@ -1550,6 +1581,8 @@ function handleUpdatephieuKiemTra(id) {
 }
 
 function main() {
+    getPhieu();
+
     getNhaCungCap(renderNhaCungCap);
     handleCreateNhaCungCap();
     
@@ -1579,6 +1612,7 @@ function main() {
 
     getPhieuYeuCau(renderPhieuYeuCau);
     handleCreatePhieuYeuCau();
+    
 }
 
 main();

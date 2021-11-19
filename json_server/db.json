@@ -32,9 +32,9 @@
     },
     {
       "GhiChu": "",
-      "MaBP": "",
-      "TenBP": "",
-      "id": 6
+      "MaBP": "HC",
+      "TenBP": "Phòng hành chính",
+      "id": 7
     }
   ],
   "nhanVien": [
@@ -71,7 +71,7 @@
       "id": 1,
       "TenNCC": "Khánh Việt",
       "DiaChiNCC": "",
-      "MaLoaiHH": "1",
+      "TenLoaiHH": "Phụ liệu may",
       "SoDienThoaiNCC": "",
       "EmailNCC": ""
     },
@@ -79,7 +79,7 @@
       "id": 2,
       "TenNCC": "An Phát",
       "DiaChiNCC": "",
-      "MaLoaiHH": "2",
+      "TenLoaiHH": "Phụ liệu may",
       "SoDienThoaiNCC": "",
       "EmailNCC": ""
     }
@@ -193,20 +193,7 @@
       "GhiChu": ""
     }
   ],
-  "phieuYeuCau": [
-    {
-      "GhiChu": "",
-      "idMaLoaiHH": "",
-      "TenLoaiHH": "",
-      "idMaHH": "",
-      "TenHH": "",
-      "idMaNV": "",
-      "HoTenNV": "",
-      "SoLuongYC": "",
-      "NgayLapPYC": "",
-      "id": 1
-    }
-  ],
+  "phieuYeuCau": [],
   "hoaDon": [
     {
       "idMaHD": 1,
