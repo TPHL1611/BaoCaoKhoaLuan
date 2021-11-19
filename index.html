@@ -166,7 +166,8 @@
                         <li><a href="">Báo cáo <i class="nav-arrow-right ti-arrow-circle-right"></i></a>
                             <ul class="subnav2">
                                 <li class="js-phieu js-BCNK"><a href="#">Báo cáo nhập kho</a></li>
-                                <li class="js-phieu js-BCXK open"><a href="#">Báo cáo xuất kho</a></li>
+                                <li class="js-phieu js-BCXK"><a href="#">Báo cáo xuất kho</a></li>
+                                <li class="js-phieu js-BCTK open"><a href="#">Báo cáo tồn kho</a></li>
                             </ul>
                         </li>
                         <li><a href="">Thiết lập báo cáo tài chính</a></li>
@@ -560,7 +561,6 @@
             </div>
 
             <!--Start: Phiếu nhập-->
-
             <div class="phieu js-phieuNhap">
                 <label for="" class="label-heading">Phiếu nhập</label>
                 
@@ -651,7 +651,6 @@
             </div>
 
             <!--Start: Phiếu xuất-->
-
             <div class="phieu js-phieuXuat">
                 <label for="" class="label-heading">Phiếu xuất</label>
                 
@@ -743,7 +742,6 @@
             </div>
 
             <!--Start: Phiếu kiểm tra-->
-            
             <div class="phieu js-phieuKiemTra">
                 <label for="" class="label-heading">Phiếu kiểm tra</label>
                     
@@ -864,7 +862,6 @@
             </div>
 
             <!--Start: Phiếu yêu cầu-->
-
             <div class="phieu js-phieuYeuCau">
                 <label for="" class="label-heading">Phiếu yêu cầu</label>
                     
@@ -958,7 +955,6 @@
             </div>
 
             <!--Start: Báo cáo nhập kho-->
-
             <div class="phieu js-BCNK">
                 <label for="" class="label-heading">Báo cáo nhập kho</label>
                     
@@ -1021,8 +1017,7 @@
             </div>
 
             <!--Start: Báo cáo xuất kho-->
-
-            <div class="phieu js-BCXK open">
+            <div class="phieu js-BCXK">
                 <label for="" class="label-heading">Báo cáo xuất kho</label>
                     
                 <div class="phieu-container">                      
@@ -1069,6 +1064,69 @@
                                 <th>Mã hàng hóa</th>
                                 <th>Tên hàng hóa</th>
                                 <th>Tổng số lượng xuất</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="row-btn">
+                        <button class="btn btn-BaoCao">IN BÁO CÁO</button>
+                    </div>
+                </div>
+                    
+            </div>
+
+            <!--Start: Báo cáo tồn kho-->
+            <div class="phieu js-BCTK open">
+                <label for="" class="label-heading">Báo cáo tồn kho</label>
+                    
+                <div class="phieu-container">                      
+
+                    <div class="row">
+                        <div class="col col-full phieu-content">
+                            <label for="" class="phieu-label">Tên loại hàng hóa</label>
+                            <select name="tenloaiHH" id="" class= "phieu-input" placeholder="Tên loại hàng hóa">
+                                <option value="">Vải</option>
+                                <option value="">Phụ liệu may</option>
+                                <option value="">Phụ liệu đóng gói</option>
+                            </select>
+                        </div>
+
+                        <div class="col col-full phieu-content">
+                            <label for="" class="phieu-label">Tên hàng hóa</label>
+                            <select name="tenloaiHH" id="" class= "phieu-input" placeholder="Tên hàng hóa">
+                                <option value="">Vải cotton</option>
+                                <option value="">Thun lạnh</option>
+                                <option value="">Nút</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phieu-btn">
+                    <div class="row-btn">
+                        <button class="btn btn-create">Tìm kiếm</button>
+                    </div>
+                
+                    <div class="row-btn">
+                        <button class="btn">Xong</button>
+                    </div>
+                </div>
+
+                <div class="tableBCTK">
+                    <table>
+                        <thead>
+                            <tr class="table-header">
+                                <th>Ngày tạo báo cáo</th>
+                                <th>Mã báo cáo</th>
+                                <th>Mã loại hàng hóa</th>
+                                <th>Tên loại hàng hóa</th>
+                                <th>Mã hàng hóa</th>
+                                <th>Tên hàng hóa</th>
+                                <th>Số lượng đã nhập</th>
+                                <th>Số lượng đã xuất</th>
+                                <th>Số lượng tồn</th>
                             </tr>
                         </thead>
                         <tbody>

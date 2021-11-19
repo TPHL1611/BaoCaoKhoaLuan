@@ -1639,6 +1639,40 @@ function renderBCXK(BCXKs) {
     listBCXKs.innerHTML = htmls.join('');
 }
 
+/**
+ * |-----------------------------------------------------------------------|
+ * |                            BÁO CÁO TỒN KHO                            |
+ * |-----------------------------------------------------------------------|
+ */
+
+ var BCTKApi = 'http://localhost:3000/baoCaoTonKho'
+
+function getBCTK(callback) {
+    fetch(BCTKApi)
+        .then(response => response.json())
+        .then(callback);
+}
+  
+function renderBCTK(BCTKs) {
+    var listBCTKs = document.querySelector('.tableBCTK tbody');
+
+    var htmls = BCTKs.map((BCTK) => 
+       `<tr class="table-data tb-BCNK Item-${BCTK.id}">
+           <td>${BCTK.NgayTaoBC}</td>
+           <td>${BCTK.id}</td>
+           <td class="idMaLoaiHH-${BCTK.id}">${BCTK.idMaLoaiHH}</td>
+           <td class="tenLoaiHH-${BCTK.id}">${BCTK.TenLoaiHH}</td>
+           <td class="idMaHH-${BCTK.id}">${BCTK.idMaHH}</td>
+           <td class="tenHH-${BCTK.id}">${BCTK.TenHH}</td>
+           <td class="soLuongXuat-${BCTK.id}">${BCTK.SoLuongDaNhap}</td>
+           <td class="soLuongXuat-${BCTK.id}">${BCTK.SoLuongDaXuat}</td>
+           <td class="soLuongXuat-${BCTK.id}">${BCTK.SoLuongTon}</td>
+       </tr>`
+    )
+
+    listBCTKs.innerHTML = htmls.join('');
+}
+
 function main() {
     getPhieu();
 
@@ -1675,6 +1709,8 @@ function main() {
     getBCNK(renderBCNK);
 
     getBCXK(renderBCXK);
+
+    getBCTK(renderBCTK);
 }
 
 main();

@@ -320,6 +320,10 @@ th, td {
     padding: 8px;
 }
 
+.btn-BaoCao {
+    float: right;
+}
+
 /*Footer*/
 
 #footer {
@@ -440,9 +444,4 @@ th, td {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-
-.btn-BaoCao {
-    float: right;
 }

@@ -230,5 +230,18 @@
       "TenHH": "Thun lạnh",
       "SoLuongXuat": 10000
     }
+  ],
+  "baoCaoTonKho": [
+    {
+      "id": 1,
+      "NgayTaoBC": "20/11/2020",
+      "idMaLoaiHH": 1,
+      "TenLoaiHH": "Vải",
+      "idMaHH": 2,
+      "TenHH": "Thun lạnh",
+      "SoLuongDaNhap": 10000,
+      "SoLuongDaXuat": 5000,
+      "SoLuongTon": 5000
+    }
   ]
 }
