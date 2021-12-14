@@ -110,7 +110,7 @@
     {
       "id": 1,
       "TenHH": "Vải cotton ",
-      "SoLuong": "10000",
+      "SoLuong": "10.000",
       "DonViTinh": "mét",
       "idMaNV": 1,
       "idMaLoaiHH": 1,
@@ -128,7 +128,7 @@
     {
       "id": 3,
       "TenHH": "Nút",
-      "SoLuong": "10000",
+      "SoLuong": "10.000",
       "DonViTinh": "cái",
       "idMaNV": 2,
       "idMaLoaiHH": 2,
@@ -186,8 +186,8 @@
       "TenNCC": "An Phát",
       "idMaNV": "",
       "HoTenNV": "",
-      "SoLuongYC": 5000,
-      "SoLuongKT": 5000,
+      "SoLuongYC": "5000",
+      "SoLuongKT": "5000",
       "TinhTrang": "",
       "NgayLapPKT": "",
       "GhiChu": ""
@@ -217,7 +217,7 @@
       "TenLoaiHH": "Vải",
       "idMaHH": 2,
       "TenHH": "Thun lạnh",
-      "SoLuongNhap": 10000
+      "SoLuongNhap": "10.000"
     }
   ],
   "baoCaoXuatKho": [
@@ -228,7 +228,7 @@
       "TenLoaiHH": "Vải",
       "idMaHH": 2,
       "TenHH": "Thun lạnh",
-      "SoLuongXuat": 10000
+      "SoLuongXuat": "10.000"
     }
   ],
   "baoCaoTonKho": [
@@ -239,9 +239,9 @@
       "TenLoaiHH": "Vải",
       "idMaHH": 2,
       "TenHH": "Thun lạnh",
-      "SoLuongDaNhap": 10000,
-      "SoLuongDaXuat": 5000,
-      "SoLuongTon": 5000
+      "SoLuongDaNhap": "10.000",
+      "SoLuongDaXuat": "5000",
+      "SoLuongTon": "5000"
     }
   ]
 }
